@@ -1,1 +1,2 @@
 # computer-from-scratch
+Exercises repo for *The Elements of Computing Systems: Building a Modern Computer from First Principles* book by Noam Nisan and Shimon Schocken (also known as [Nand2Tetris project](https://www.nand2tetris.org/)).
