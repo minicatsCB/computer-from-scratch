@@ -15,3 +15,7 @@ ghdl -r not_chip_tb --vcd=not_chip.vcd
 
 5. Open .vcd file with GTKWave
 gtkwave not_chip.vcd
+
+6. Manually check the result of the tests
+Don't expect in this project to see some console output like Jest.
+Just open the waves and check with your eyes if the outputs are correct.
