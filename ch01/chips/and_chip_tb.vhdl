@@ -5,14 +5,6 @@ entity and_chip_tb is
 end entity and_chip_tb;
 
 architecture behavior of and_chip_tb is
-    component and_chip
-        port (
-            a: in std_logic;
-            b: in std_logic;
-            o: out std_logic
-        );
-    end component;
-
     signal a, b, o : std_logic := '0';
 
 begin
