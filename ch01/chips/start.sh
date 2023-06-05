@@ -29,27 +29,36 @@ if [ $# -eq 0 ]
     exit 1
 fi
 
-while getopts ":n:saerwh" FLAG;
+while getopts ":n:saerwch" FLAG;
 do
     case "${FLAG}" in
         n) name=$OPTARG
            echo -e "Unit to process: $name"
            ;;
-        s) echo -e "Checking syntax of [${name}.vhdl, ${name}_tb.vhdl]"
+        s) echo -e "Checking syntax of ${name}"
            ghdl -s ${name}.vhdl
            ghdl -s ${name}_tb.vhdl
            ;;
-        a) echo -e "Analyzing [${name}.vhdl, ${name}_tb.vhdl]"
+        a) echo -e "Analyzing ${name}"
            ghdl -a ${name}.vhdl
            ghdl -a ${name}_tb.vhdl
            ;;
-        e) echo -e "Elaborating [${name}_tb]"
+        e) echo -e "Elaborating ${name}"
            ghdl -e ${name}_tb
            ;;
-        r) echo -e "Running [${name}_tb]"
+        r) echo -e "Running ${name}"
            ghdl -r ${name}_tb --vcd=${name}.vcd
            ;;
-        w) echo -e "Opening waves of [${name}_tb]"
+        w) echo -e "Opening waves of ${name}"
+           gtkwave.exe ${name}.vcd  # Assumes access to Windows executable
+           ;;
+        c) echo -e "Complete execution of [${name}]"
+           ghdl -s ${name}.vhdl
+           ghdl -a ${name}.vhdl
+           ghdl -s ${name}_tb.vhdl
+           ghdl -a ${name}_tb.vhdl
+           ghdl -e ${name}_tb
+           ghdl -r ${name}_tb --vcd=${name}.vcd
            gtkwave.exe ${name}.vcd  # Assumes access to Windows executable
            ;;
         h) help
