@@ -37,11 +37,9 @@ do
            ;;
         s) echo -e "Checking syntax of ${name}"
            ghdl -s ${name}.vhdl
-           ghdl -s ${name}_tb.vhdl
            ;;
         a) echo -e "Analyzing ${name}"
            ghdl -a ${name}.vhdl
-           ghdl -a ${name}_tb.vhdl
            ;;
         e) echo -e "Elaborating ${name}"
            ghdl -e ${name}_tb
