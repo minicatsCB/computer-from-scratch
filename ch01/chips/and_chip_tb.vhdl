@@ -17,12 +17,17 @@ architecture behavior of and_chip_tb is
 
 begin
 
-    dut: and_chip port map(
-        a => a,
+    dut_1: entity work.and_chip(parts_1) PORT MAP (
+		a => a,
         b => b,
         o => o
-    );
+	);
     
+    dut_2: entity work.and_chip(parts_2) PORT MAP (
+		a => a,
+        b => b,
+        o => o
+	);
 
     stimulus: process
     begin
