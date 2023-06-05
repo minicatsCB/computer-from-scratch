@@ -29,7 +29,7 @@ if [ $# -eq 0 ]
     exit 1
 fi
 
-while getopts ":n:saerwch" FLAG;
+while getopts ":n:saerwzch" FLAG;
 do
     case "${FLAG}" in
         n) name=$OPTARG
@@ -52,7 +52,7 @@ do
         w) echo -e "Opening waves of ${name}"
            gtkwave.exe ${name}.vcd  # Assumes access to Windows executable
            ;;
-        c) echo -e "Complete execution of [${name}]"
+        z) echo -e "Complete execution of [${name}]"
            ghdl -s ${name}.vhdl
            ghdl -a ${name}.vhdl
            ghdl -s ${name}_tb.vhdl
@@ -61,6 +61,10 @@ do
            ghdl -r ${name}_tb --vcd=${name}.vcd
            gtkwave.exe ${name}.vcd  # Assumes access to Windows executable
            ;;
+         c) echo -e "Cleaning project"
+            rm *.vcd
+            rm *.cf
+         ;;
         h) help
            ;;
         \?) echo "$0: Error: Invalid option: -${OPTARG}" >&2; exit 1;;
