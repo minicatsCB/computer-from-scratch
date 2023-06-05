@@ -1,11 +1,13 @@
 #!/bin/bash
 
+SCRIPT="start.sh"
+
 function usage {
     echo -e "usage: $SCRIPT MANDATORY [OPTION]\n"
 }
 
 function example {
-    echo -e "example: $SCRIPT --name and_chip -saer\n"
+    echo -e "example: $SCRIPT --name and_chip -saerw\n"
 }
 
 function help {
