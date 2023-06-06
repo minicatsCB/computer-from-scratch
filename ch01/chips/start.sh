@@ -45,10 +45,10 @@ do
            ghdl -a ${name}.vhdl
            ;;
         e) echo -e "Elaborating ${name}"
-           ghdl -e ${name}_tb
+           ghdl -e ${name}
            ;;
         r) echo -e "Running ${name}"
-           ghdl -r ${name}_tb --vcd=${name}.vcd
+           ghdl -r ${name} --vcd=${name}.vcd
            ;;
         w) echo -e "Opening waves of ${name}"
            gtkwave.exe ${name}.vcd  # Assumes access to Windows executable
