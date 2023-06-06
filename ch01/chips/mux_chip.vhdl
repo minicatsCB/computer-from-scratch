@@ -11,7 +11,7 @@ entity mux_chip is
     );
 end mux_chip;
 
--- Example of multiple architectures
+-- Example of using "premade" entities
 architecture parts of mux_chip is
     signal a_i, b_i, c_i, a_o, b_o, c_o : std_logic := '0';
 begin
