@@ -19,6 +19,9 @@ function help {
   echo -e "  -a,     ANALYZE file"
   echo -e "  -e,     ELABORATE unit"
   echo -e "  -r,     RUN unit"
+  echo -e "  -w,     Show unit WAVES"
+  echo -e "  -z,     Process unit ENTIRELY (from syntax check to waves visualization)"
+  echo -e "  -c,     CLEAN project"
   echo -e "  -h,     Prints this HELP\n"
   example
 }
