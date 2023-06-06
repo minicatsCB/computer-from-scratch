@@ -1,0 +1,22 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+-- If sel = 0 then o = a else out = b
+entity mux_chip is
+    port (
+        a: in std_logic;
+        b: in std_logic;
+        sel: in std_logic;
+        o: out std_logic
+    );
+end mux_chip;
+
+-- Example of multiple architectures
+architecture parts of mux_chip is
+    signal a_i, b_i, c_i, a_o, b_o, c_o : std_logic := '0';
+begin
+    u0: entity work.not_chip(parts) port map(sel, a_o);
+    u1: entity work.and_chip(parts) port map(a, a_o, b_o);
+    u2: entity work.and_chip(parts) port map(b, sel, c_o);
+    u3: entity work.or_chip(parts) port map(b_o, c_o, o);
+end parts;
