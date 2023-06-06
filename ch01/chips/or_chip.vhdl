@@ -1,6 +1,7 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 
+-- If a = b = 0 then o = 0 else o = 1
 entity or_chip is
     port (
         a: in std_logic;
