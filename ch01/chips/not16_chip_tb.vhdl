@@ -1,5 +1,6 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 entity not16_chip_tb is
 end entity not16_chip_tb;
@@ -23,12 +24,15 @@ begin
     
 
     stimulus: process
+        variable count : std_logic_vector(15 downto 0);
     begin
-        a <= "0000000000000000";
-        wait for 50 ns;
+        for idx in 0 to 15 loop
+			-- Convert decimal integer idx to its binary representation
+			count := std_logic_vector(to_unsigned(idx, 16));
 
-        a <= "1111110111110110";
-        wait for 50 ns;
+            a <= count;
+			wait for 50 ns;
+		end loop;
 
         assert true report "Tests finished";
         wait;
