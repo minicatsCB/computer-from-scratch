@@ -11,5 +11,7 @@ end not16_chip;
 
 architecture parts of not16_chip is
 begin
-    o <= a nand a;
+    gen: for idx in 0 to 15 generate
+        u0: entity work.not_chip(parts) port map(a(idx), o(idx));
+    end generate;
 end parts;
