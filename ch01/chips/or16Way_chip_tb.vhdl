@@ -31,8 +31,7 @@ architecture behavior of or16Way_chip_tb is
 
 begin
 
-    dut: or16Way_chip port map(a, b, c, d, e, f, g, h, i, j, k, l, m, n, p, q, o);
-    
+    dut: or16Way_chip port map(a, b, c, d, e, f, g, h, i, j, k, l, m, n, p, q, o);  
 
     stimulus: process
     begin

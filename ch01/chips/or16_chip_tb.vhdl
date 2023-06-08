@@ -17,12 +17,7 @@ architecture behavior of or16_chip_tb is
 
 begin
 
-    dut: or16_chip port map(
-        a => a,
-        b => b,
-        o => o
-    );
-    
+    dut: or16_chip port map(a, b, o);   
 
     stimulus: process
     begin

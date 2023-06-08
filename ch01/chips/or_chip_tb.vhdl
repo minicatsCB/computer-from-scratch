@@ -17,11 +17,7 @@ architecture behavior of or_chip_tb is
 
 begin
 
-    dut: or_chip port map(
-        a => a,
-        b => b,
-        o => o
-    );
+    dut: or_chip port map(a, b, o);
     
 
     stimulus: process

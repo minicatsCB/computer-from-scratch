@@ -17,13 +17,8 @@ architecture behavior of and16_chip_tb is
 
 begin
 
-    dut: and16_chip port map(
-        a => a,
-        b => b,
-        o => o
-    );
+    dut: and16_chip port map(a, b, o);
     
-
     stimulus: process
     begin
             a <= "0000000000000000";

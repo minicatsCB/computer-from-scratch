@@ -18,12 +18,7 @@ architecture behavior of demux_chip_tb is
 
 begin
 
-    dut: demux_chip port map(
-        data => data,
-        sel => sel,
-        o1 => o1,
-        o2 => o2
-    );
+    dut: demux_chip port map(data, sel, o1, o2);
 
     stimulus: process
     begin

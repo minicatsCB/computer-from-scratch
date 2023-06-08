@@ -16,10 +16,7 @@ architecture behavior of not_chip_tb is
 
 begin
 
-    dut: not_chip port map(
-        a => a,
-        o => o
-    );
+    dut: not_chip port map(a, o);
     
 
     stimulus: process

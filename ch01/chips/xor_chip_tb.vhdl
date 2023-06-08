@@ -9,18 +9,8 @@ architecture behavior of xor_chip_tb is
 
 begin
 
-    dut_1: entity work.xor_chip(parts_1) PORT MAP (
-		a => a,
-        b => b,
-        o => o
-	);
-    
-    dut_2: entity work.xor_chip(parts_2) PORT MAP (
-		a => a,
-        b => b,
-        o => o
-	);
-    
+    dut_1: entity work.xor_chip(parts_1) PORT MAP (a, b, o);
+    dut_2: entity work.xor_chip(parts_2) PORT MAP (a, b, o);
 
     stimulus: process
     begin

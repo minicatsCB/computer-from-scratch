@@ -18,14 +18,8 @@ architecture behavior of mux_chip_tb is
 
 begin
 
-    dut: mux_chip port map(
-        a => a,
-        b => b,
-        sel => sel,
-        o => o
-    );
+    dut: mux_chip port map(a, b, sel, o);
     
-
     stimulus: process
     begin
         a <= '0';

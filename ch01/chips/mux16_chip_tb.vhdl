@@ -19,13 +19,7 @@ architecture behavior of mux16_chip_tb is
 
 begin
 
-    dut: mux16_chip port map(
-        a => a,
-        b => b,
-        sel => sel,
-        o => o
-    );
-    
+    dut: mux16_chip port map(a, b, sel, o);
 
     stimulus: process
     begin

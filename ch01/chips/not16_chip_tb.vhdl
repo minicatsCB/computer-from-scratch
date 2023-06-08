@@ -17,10 +17,7 @@ architecture behavior of not16_chip_tb is
 
 begin
 
-    dut: not16_chip port map(
-        a => a,
-        o => o
-    );
+    dut: not16_chip port map(a, o);
     
 
     stimulus: process
