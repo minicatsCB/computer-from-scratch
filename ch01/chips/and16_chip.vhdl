@@ -1,7 +1,7 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 
--- For i = 0..15 o = and16_chip(a[i])
+-- For i = 0..15 o = and16_chip(a[i], b[i])
 entity and16_chip is
     port (
         a: in std_logic_vector(15 downto 0);
