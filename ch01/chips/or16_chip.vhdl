@@ -12,5 +12,7 @@ end or16_chip;
 
 architecture parts of or16_chip is
 begin
-    o <= (a nand a) nand (b nand b);
+    gen: for idx in 0 to 15 generate
+        u0: entity work.or_chip(parts) port map(a(idx), b(idx), o(idx));
+    end generate;
 end parts;
