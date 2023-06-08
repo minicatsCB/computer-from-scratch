@@ -21,13 +21,13 @@ begin
     
 
     stimulus: process
-        variable count : std_logic_vector(15 downto 0);
+        variable sample : std_logic_vector(15 downto 0);
     begin
         for idx in 0 to 15 loop
 			-- Convert decimal integer idx to its binary representation
-			count := std_logic_vector(to_unsigned(idx, 16));
+			sample := std_logic_vector(to_unsigned(idx, 16));
 
-            a <= count;
+            a <= sample;
 			wait for 50 ns;
 		end loop;
 
