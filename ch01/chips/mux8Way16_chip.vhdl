@@ -18,15 +18,10 @@ entity mux8Way16_chip is
 end mux8Way16_chip;
 
 architecture parts of mux8Way16_chip is
-    signal a_o, b_o, c_o, d_o, e_o, f_o : std_logic_vector(15 downto 0) := (others => '0');
+    signal a_o, b_o : std_logic_vector(15 downto 0) := (others => '0');
 begin
-    u0: entity work.mux16_chip(parts) port map(a, b, sel(0), a_o);
-    u1: entity work.mux16_chip(parts) port map(c, d, sel(0), b_o);
-    u2: entity work.mux16_chip(parts) port map(e, f, sel(0), c_o);
-    u3: entity work.mux16_chip(parts) port map(g, h, sel(0), d_o);
+    u0: entity work.mux4Way16_chip(parts) port map(a, b, c, d, sel(1 downto 0), a_o);
+    u1: entity work.mux4Way16_chip(parts) port map(e, f, g, h, sel(1 downto 0), b_o);
 
-    u4: entity work.mux16_chip(parts) port map(a_o, b_o, sel(1), e_o);
-    u5: entity work.mux16_chip(parts) port map(c_o, d_o, sel(1), f_o);
-
-    u6: entity work.mux16_chip(parts) port map(e_o, f_o, sel(2), o);
+    u3: entity work.mux16_chip(parts) port map(a_o, b_o, sel(2), o);
 end parts;
