@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 
 -- If a = b = c = .. = p = 0 then o = 0 else o = 1
-entity or16Way_chip is
+entity or16w1b_chip is
     port (
         a: in std_logic;
         b: in std_logic;
@@ -22,9 +22,9 @@ entity or16Way_chip is
         q: in std_logic;
         o: out std_logic
     );
-end or16Way_chip;
+end or16w1b_chip;
 
-architecture parts of or16Way_chip is
+architecture parts of or16w1b_chip is
     signal a_o, b_o, c_o, d_o, e_o, f_o, g_o, h_o : std_logic := '0';
     signal i_o, j_o, k_o, l_o : std_logic := '0';
     signal m_o, n_o : std_logic := '0';

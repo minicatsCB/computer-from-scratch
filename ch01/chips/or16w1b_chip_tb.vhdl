@@ -1,11 +1,11 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity or16Way_chip_tb is
-end entity or16Way_chip_tb;
+entity or16w1b_chip_tb is
+end entity or16w1b_chip_tb;
 
-architecture behavior of or16Way_chip_tb is
-    component or16Way_chip
+architecture behavior of or16w1b_chip_tb is
+    component or16w1b_chip
         port (
             a: in std_logic;
             b: in std_logic;
@@ -31,7 +31,7 @@ architecture behavior of or16Way_chip_tb is
 
 begin
 
-    dut: or16Way_chip port map(a, b, c, d, e, f, g, h, i, j, k, l, m, n, p, q, o);  
+    dut: or16w1b_chip port map(a, b, c, d, e, f, g, h, i, j, k, l, m, n, p, q, o);  
 
     stimulus: process
     begin
