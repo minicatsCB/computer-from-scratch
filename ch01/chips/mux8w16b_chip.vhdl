@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 
 -- If sel = 000 then o = a else if sel = 001 then o = b ... else if sel = 111 then o = h
-entity mux8Way16_chip is
+entity mux8w16b_chip is
     port (
         a: in std_logic_vector(15 downto 0);
         b: in std_logic_vector(15 downto 0);
@@ -15,9 +15,9 @@ entity mux8Way16_chip is
         sel: in std_logic_vector(2 downto 0);
         o: out std_logic_vector(15 downto 0)
     );
-end mux8Way16_chip;
+end mux8w16b_chip;
 
-architecture parts of mux8Way16_chip is
+architecture parts of mux8w16b_chip is
     signal a_o, b_o : std_logic_vector(15 downto 0) := (others => '0');
 begin
     u0: entity work.mux4w16b_chip(parts) port map(a, b, c, d, sel(1 downto 0), a_o);

@@ -2,11 +2,11 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity mux8Way16_chip_tb is
-end entity mux8Way16_chip_tb;
+entity mux8w16b_chip_tb is
+end entity mux8w16b_chip_tb;
 
-architecture behavior of mux8Way16_chip_tb is
-    component mux8Way16_chip
+architecture behavior of mux8w16b_chip_tb is
+    component mux8w16b_chip
         port (
             a: in std_logic_vector(15 downto 0);
             b: in std_logic_vector(15 downto 0);
@@ -26,7 +26,7 @@ architecture behavior of mux8Way16_chip_tb is
 
 begin
 
-    dut: mux8Way16_chip port map(a, b, c, d, e, f, g, h, sel, o);
+    dut: mux8w16b_chip port map(a, b, c, d, e, f, g, h, sel, o);
 
     stimulus: process
         variable count : std_logic_vector(2 downto 0);
