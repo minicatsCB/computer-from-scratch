@@ -1,11 +1,11 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity not2w1b_chip_tb is
-end entity not2w1b_chip_tb;
+entity not1w1b_chip_tb is
+end entity not1w1b_chip_tb;
 
-architecture behavior of not2w1b_chip_tb is
-    component not2w1b_chip
+architecture behavior of not1w1b_chip_tb is
+    component not1w1b_chip
         port (
             a: in std_logic;
             o: out std_logic
@@ -16,7 +16,7 @@ architecture behavior of not2w1b_chip_tb is
 
 begin
 
-    dut: not2w1b_chip port map(a, o);
+    dut: not1w1b_chip port map(a, o);
     
 
     stimulus: process

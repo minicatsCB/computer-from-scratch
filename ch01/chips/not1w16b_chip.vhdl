@@ -12,6 +12,6 @@ end not1w16b_chip;
 architecture parts of not1w16b_chip is
 begin
     gen: for idx in 0 to 15 generate
-        u0: entity work.not2w1b_chip(parts) port map(a(idx), o(idx));
+        u0: entity work.not1w1b_chip(parts) port map(a(idx), o(idx));
     end generate;
 end parts;
