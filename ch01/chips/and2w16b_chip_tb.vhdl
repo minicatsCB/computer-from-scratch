@@ -1,11 +1,11 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity and16_chip_tb is
-end entity and16_chip_tb;
+entity and2w16b_chip_tb is
+end entity and2w16b_chip_tb;
 
-architecture behavior of and16_chip_tb is
-    component and16_chip
+architecture behavior of and2w16b_chip_tb is
+    component and2w16b_chip
         port (
             a: in std_logic_vector(15 downto 0);
             b: in std_logic_vector(15 downto 0);
@@ -17,7 +17,7 @@ architecture behavior of and16_chip_tb is
 
 begin
 
-    dut: and16_chip port map(a, b, o);
+    dut: and2w16b_chip port map(a, b, o);
     
     stimulus: process
     begin
