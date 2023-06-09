@@ -7,7 +7,7 @@ function usage {
 }
 
 function example {
-    echo -e "example: $SCRIPT --name and_chip -saerw\n"
+    echo -e "example: $SCRIPT --name and2w1b_chip -saerw\n"
 }
 
 function help {
