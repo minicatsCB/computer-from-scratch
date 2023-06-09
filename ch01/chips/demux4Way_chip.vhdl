@@ -16,7 +16,7 @@ end demux4Way_chip;
 architecture parts of demux4Way_chip is
     signal a_o, b_o : std_logic := '0';
 begin
-    u0: entity work.demux_chip(parts) port map(data, sel(1), a_o, b_o);
-    u1: entity work.demux_chip(parts) port map(a_o, sel(0), o1, o2);
-    u2: entity work.demux_chip(parts) port map(b_o, sel(0), o3, o4);
+    u0: entity work.demux2w1b_chip(parts) port map(data, sel(1), a_o, b_o);
+    u1: entity work.demux2w1b_chip(parts) port map(a_o, sel(0), o1, o2);
+    u2: entity work.demux2w1b_chip(parts) port map(b_o, sel(0), o3, o4);
 end parts;

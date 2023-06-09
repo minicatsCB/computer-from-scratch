@@ -1,11 +1,11 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity demux_chip_tb is
-end entity demux_chip_tb;
+entity demux2w1b_chip_tb is
+end entity demux2w1b_chip_tb;
 
-architecture behavior of demux_chip_tb is
-    component demux_chip
+architecture behavior of demux2w1b_chip_tb is
+    component demux2w1b_chip
         port (
             data: in std_logic;
             sel: in std_logic;
@@ -18,7 +18,7 @@ architecture behavior of demux_chip_tb is
 
 begin
 
-    dut: demux_chip port map(data, sel, o1, o2);
+    dut: demux2w1b_chip port map(data, sel, o1, o2);
 
     stimulus: process
     begin
