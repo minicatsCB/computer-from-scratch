@@ -16,7 +16,7 @@ end mux4Way16_chip;
 architecture parts of mux4Way16_chip is
     signal a_o, b_o : std_logic_vector(15 downto 0) := (others => '0');
 begin
-    u0: entity work.mux16_chip(parts) port map(a, b, sel(0), a_o);
-    u1: entity work.mux16_chip(parts) port map(c, d, sel(0), b_o);
-    u2: entity work.mux16_chip(parts) port map(a_o, b_o, sel(1), o);
+    u0: entity work.mux2w16b_chip(parts) port map(a, b, sel(0), a_o);
+    u1: entity work.mux2w16b_chip(parts) port map(c, d, sel(0), b_o);
+    u2: entity work.mux2w16b_chip(parts) port map(a_o, b_o, sel(1), o);
 end parts;
