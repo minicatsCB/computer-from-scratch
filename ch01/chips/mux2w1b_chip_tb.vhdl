@@ -1,11 +1,11 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity mux_chip_tb is
-end entity mux_chip_tb;
+entity mux2w1b_chip_tb is
+end entity mux2w1b_chip_tb;
 
-architecture behavior of mux_chip_tb is
-    component mux_chip
+architecture behavior of mux2w1b_chip_tb is
+    component mux2w1b_chip
         port (
             a: in std_logic;
             b: in std_logic;
@@ -18,7 +18,7 @@ architecture behavior of mux_chip_tb is
 
 begin
 
-    dut: mux_chip port map(a, b, sel, o);
+    dut: mux2w1b_chip port map(a, b, sel, o);
     
     stimulus: process
     begin
