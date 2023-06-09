@@ -20,5 +20,5 @@ architecture parts_2 of and_chip is
     signal a_i : std_logic := '0';
 begin
     a_i <= (a nand b);
-    u0: entity work.not_chip(parts) port map(a_i, o);
+    u0: entity work.not2w1b_chip(parts) port map(a_i, o);
 end parts_2;
