@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 
 -- If sel = 000 then { o1 = data, o2 = o3 = .. = o8 = 0 } else if sel = 001 { o2 = data, o1 = o3 = .. = o8 = 0 } else if .. else if sel = 111 { o8 = data, o1 = o2 = .. = o7 = 0 }
-entity demux8Way_chip is
+entity demux8w1b_chip is
     port (
         data: in std_logic;
         sel: in std_logic_vector(2 downto 0);
@@ -15,9 +15,9 @@ entity demux8Way_chip is
         o7: out std_logic;
         o8: out std_logic
     );
-end demux8Way_chip;
+end demux8w1b_chip;
 
-architecture parts of demux8Way_chip is
+architecture parts of demux8w1b_chip is
     signal a_o, b_o : std_logic := '0';
 begin
     u0: entity work.demux2w1b_chip(parts) port map(data, sel(2), a_o, b_o);

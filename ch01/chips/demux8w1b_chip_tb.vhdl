@@ -2,11 +2,11 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity demux8Way_chip_tb is
-end entity demux8Way_chip_tb;
+entity demux8w1b_chip_tb is
+end entity demux8w1b_chip_tb;
 
-architecture behavior of demux8Way_chip_tb is
-    component demux8Way_chip
+architecture behavior of demux8w1b_chip_tb is
+    component demux8w1b_chip
         port (
             data: in std_logic;
             sel: in std_logic_vector(2 downto 0);
@@ -26,7 +26,7 @@ architecture behavior of demux8Way_chip_tb is
 
 begin
 
-    dut: demux8Way_chip port map(data, sel, o1, o2, o3, o4, o5, o6, o7, o8);
+    dut: demux8w1b_chip port map(data, sel, o1, o2, o3, o4, o5, o6, o7, o8);
 
     stimulus: process
         variable count : std_logic_vector(2 downto 0);
