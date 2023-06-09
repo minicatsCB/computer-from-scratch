@@ -29,22 +29,22 @@ architecture parts of or16Way_chip is
     signal i_o, j_o, k_o, l_o : std_logic := '0';
     signal m_o, n_o : std_logic := '0';
 begin
-    u0: entity work.or_chip(parts) port map(a, b, a_o);
-    u1: entity work.or_chip(parts) port map(c, d, b_o);
-    u2: entity work.or_chip(parts) port map(e, f, c_o);
-    u3: entity work.or_chip(parts) port map(g, h, d_o);
-    u4: entity work.or_chip(parts) port map(i, j, e_o);
-    u5: entity work.or_chip(parts) port map(k, l, f_o);
-    u6: entity work.or_chip(parts) port map(m, n, g_o);
-    u7: entity work.or_chip(parts) port map(p, q, h_o);
+    u0: entity work.or2w1b_chip(parts) port map(a, b, a_o);
+    u1: entity work.or2w1b_chip(parts) port map(c, d, b_o);
+    u2: entity work.or2w1b_chip(parts) port map(e, f, c_o);
+    u3: entity work.or2w1b_chip(parts) port map(g, h, d_o);
+    u4: entity work.or2w1b_chip(parts) port map(i, j, e_o);
+    u5: entity work.or2w1b_chip(parts) port map(k, l, f_o);
+    u6: entity work.or2w1b_chip(parts) port map(m, n, g_o);
+    u7: entity work.or2w1b_chip(parts) port map(p, q, h_o);
 
-    u8: entity work.or_chip(parts) port map(a_o, b_o, i_o);
-    u9: entity work.or_chip(parts) port map(c_o, d_o, j_o);
-    u10: entity work.or_chip(parts) port map(e_o, f_o, k_o);
-    u11: entity work.or_chip(parts) port map(g_o, h_o, l_o);
+    u8: entity work.or2w1b_chip(parts) port map(a_o, b_o, i_o);
+    u9: entity work.or2w1b_chip(parts) port map(c_o, d_o, j_o);
+    u10: entity work.or2w1b_chip(parts) port map(e_o, f_o, k_o);
+    u11: entity work.or2w1b_chip(parts) port map(g_o, h_o, l_o);
 
-    u12: entity work.or_chip(parts) port map(i_o, j_o, m_o);
-    u13: entity work.or_chip(parts) port map(k_o, l_o, n_o);
+    u12: entity work.or2w1b_chip(parts) port map(i_o, j_o, m_o);
+    u13: entity work.or2w1b_chip(parts) port map(k_o, l_o, n_o);
 
-    u14: entity work.or_chip(parts) port map(m_o, n_o, o);
+    u14: entity work.or2w1b_chip(parts) port map(m_o, n_o, o);
 end parts;
