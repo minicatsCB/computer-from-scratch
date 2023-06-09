@@ -2,11 +2,11 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity demux4Way_chip_tb is
-end entity demux4Way_chip_tb;
+entity demux4w1b_chip_tb is
+end entity demux4w1b_chip_tb;
 
-architecture behavior of demux4Way_chip_tb is
-    component demux4Way_chip
+architecture behavior of demux4w1b_chip_tb is
+    component demux4w1b_chip
         port (
             data: in std_logic;
             sel: in std_logic_vector(1 downto 0);
@@ -22,7 +22,7 @@ architecture behavior of demux4Way_chip_tb is
 
 begin
 
-    dut: demux4Way_chip port map(data, sel, o1, o2, o3, o4);
+    dut: demux4w1b_chip port map(data, sel, o1, o2, o3, o4);
 
     stimulus: process
         variable count : std_logic_vector(1 downto 0);
