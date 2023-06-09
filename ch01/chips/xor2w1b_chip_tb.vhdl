@@ -1,16 +1,16 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity xor_chip_tb is
-end entity xor_chip_tb;
+entity xor2w1b_chip_tb is
+end entity xor2w1b_chip_tb;
 
-architecture behavior of xor_chip_tb is
+architecture behavior of xor2w1b_chip_tb is
     signal a, b, o : std_logic := '0';
 
 begin
 
-    dut_1: entity work.xor_chip(parts_1) PORT MAP (a, b, o);
-    dut_2: entity work.xor_chip(parts_2) PORT MAP (a, b, o);
+    dut_1: entity work.xor2w1b_chip(parts_1) PORT MAP (a, b, o);
+    dut_2: entity work.xor2w1b_chip(parts_2) PORT MAP (a, b, o);
 
     stimulus: process
     begin
