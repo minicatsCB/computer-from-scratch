@@ -12,14 +12,14 @@ architecture BEHAVIOR of AND2W1B_CHIP_TB is
 
 begin
 
-  DUT_1 : entity work.and2w1b_chip(parts_1)
+  DUT_1 : entity work.and2w1b_chip(rtl_1)
     port map (
       A => a,
       B => b,
       O => o
     );
 
-  DUT_2 : entity work.and2w1b_chip(parts_2)
+  DUT_2 : entity work.and2w1b_chip(rtl_2)
     port map (
       A => a,
       B => b,

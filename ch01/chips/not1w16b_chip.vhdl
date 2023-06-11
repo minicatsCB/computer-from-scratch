@@ -10,13 +10,13 @@ entity NOT1W16B_CHIP is
   );
 end entity NOT1W16B_CHIP;
 
-architecture PARTS of NOT1W16B_CHIP is
+architecture rtl of NOT1W16B_CHIP is
 
 begin
 
   GEN : for idx in 0 to 15 generate
 
-    U0 : entity work.not1w1b_chip(parts)
+    U0 : entity work.not1w1b_chip(rtl)
       port map (
         A => A(idx),
         O => O(idx)
@@ -24,4 +24,4 @@ begin
 
   end generate GEN;
 
-end architecture PARTS;
+end architecture rtl;

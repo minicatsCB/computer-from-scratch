@@ -12,13 +12,13 @@ entity MUX2W16B_CHIP is
   );
 end entity MUX2W16B_CHIP;
 
-architecture PARTS of MUX2W16B_CHIP is
+architecture rtl of MUX2W16B_CHIP is
 
 begin
 
   GEN : for idx in 0 to 15 generate
 
-    U0 : entity work.mux2w1b_chip(parts)
+    U0 : entity work.mux2w1b_chip(rtl)
       port map (
         A   => A(idx),
         B   => B(idx),
@@ -28,4 +28,4 @@ begin
 
   end generate GEN;
 
-end architecture PARTS;
+end architecture rtl;

@@ -14,13 +14,13 @@ entity MUX4W16B_CHIP is
   );
 end entity MUX4W16B_CHIP;
 
-architecture PARTS of MUX4W16B_CHIP is
+architecture rtl of MUX4W16B_CHIP is
 
   signal a_o, b_o : std_logic_vector(15 downto 0);
 
 begin
 
-  U0 : entity work.mux2w16b_chip(parts)
+  U0 : entity work.mux2w16b_chip(rtl)
     port map (
       A   => A,
       B   => B,
@@ -28,7 +28,7 @@ begin
       O   => a_o
     );
 
-  U1 : entity work.mux2w16b_chip(parts)
+  U1 : entity work.mux2w16b_chip(rtl)
     port map (
       A   => C,
       B   => D,
@@ -36,7 +36,7 @@ begin
       O   => b_o
     );
 
-  U2 : entity work.mux2w16b_chip(parts)
+  U2 : entity work.mux2w16b_chip(rtl)
     port map (
       A   => a_o,
       B   => b_o,
@@ -44,4 +44,4 @@ begin
       O   => O
     );
 
-end architecture PARTS;
+end architecture rtl;

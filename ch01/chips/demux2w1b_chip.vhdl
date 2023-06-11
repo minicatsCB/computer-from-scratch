@@ -12,30 +12,30 @@ entity DEMUX2W1B_CHIP is
   );
 end entity DEMUX2W1B_CHIP;
 
-architecture PARTS of DEMUX2W1B_CHIP is
+architecture rtl of DEMUX2W1B_CHIP is
 
   signal a_i, a_o : std_logic;
 
 begin
 
-  U0 : entity work.not1w1b_chip(parts)
+  U0 : entity work.not1w1b_chip(rtl)
     port map (
       A => SEL,
       O => a_o
     );
 
-  U1 : entity work.and2w1b_chip(parts_1)
+  U1 : entity work.and2w1b_chip(rtl_1)
     port map (
       A  => DATA,
       B  => a_o,
       O1 => O1
     );
 
-  U2 : entity work.and2w1b_chip(parts_1)
+  U2 : entity work.and2w1b_chip(rtl_1)
     port map (
       A => DATA,
       B => SEL,
       O => O2
     );
 
-end architecture PARTS;
+end architecture rtl;

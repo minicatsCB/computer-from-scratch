@@ -21,13 +21,13 @@ entity DEMUX8W1B_CHIP is
   );
 end entity DEMUX8W1B_CHIP;
 
-architecture PARTS of DEMUX8W1B_CHIP is
+architecture rtl of DEMUX8W1B_CHIP is
 
   signal a_o, b_o : std_logic;
 
 begin
 
-  U0 : entity work.demux2w1b_chip(parts)
+  U0 : entity work.demux2w1b_chip(rtl)
     port map (
       DATA => DATA,
       SEL  => SEL(2),
@@ -35,7 +35,7 @@ begin
       O2   => b_o
     );
 
-  U1 : entity work.demux4w1b_chip(parts)
+  U1 : entity work.demux4w1b_chip(rtl)
     port map (
       DATA => a_o,
       SEL  => SEL(1 downto 0),
@@ -45,7 +45,7 @@ begin
       O4   => O4
     );
 
-  U2 : entity work.demux4w1b_chip(parts)
+  U2 : entity work.demux4w1b_chip(rtl)
     port map (
       DATA => b_o,
       SEL  => SEL(1 downto 0),
@@ -55,4 +55,4 @@ begin
       O8   => O8
     );
 
-end architecture PARTS;
+end architecture rtl;

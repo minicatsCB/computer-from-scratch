@@ -11,10 +11,10 @@ entity OR2W1B_CHIP is
   );
 end entity OR2W1B_CHIP;
 
-architecture PARTS of OR2W1B_CHIP is
+architecture rtl of OR2W1B_CHIP is
 
 begin
 
   O <= (A nand A) nand (B nand B);
 
-end architecture PARTS;
+end architecture rtl;

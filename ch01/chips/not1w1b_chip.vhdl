@@ -10,10 +10,10 @@ entity NOT1W1B_CHIP is
   );
 end entity NOT1W1B_CHIP;
 
-architecture PARTS of NOT1W1B_CHIP is
+architecture rtl of NOT1W1B_CHIP is
 
 begin
 
   O <= A nand A;
 
-end architecture PARTS;
+end architecture rtl;
