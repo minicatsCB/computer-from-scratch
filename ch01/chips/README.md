@@ -3,7 +3,7 @@ Example: if you want to create a 1-way 1-bit NOT chip, create a file named `not1
 
 Next, create tests for that chip in a file named `not1w1b_chip_tb.vhdl`.
 
-Finally, execute the simulation running the Bash script `start.sh` (check `bash start.sh --help`). If all is correct, GTKWave will open. Don't expect to see some console output like Jest. Just open the waves and check with your eyes if the outputs are correct.
+Finally, execute the simulation running the Bash script `start.sh` (check `bash start.sh --help`). If all is correct, GTKWave will open. Don't expect to see some console output like Jest. Just open the waves and check with your eyes if the outputs are correct (a.k.a. "manual-check testbench").
 
 # Linting
 Use [`vsg`](https://vhdl-style-guide.readthedocs.io/en/latest/installing.html) tool to follow [VHDL Style Guide](VSG(https://vhdl-style-guide.readthedocs.io/en/latest/index.html)).
