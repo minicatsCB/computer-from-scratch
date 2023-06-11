@@ -1,7 +1,10 @@
 library IEEE;
   use ieee.std_logic_1164.all;
 
--- If sel = 00 then { o1 = data, o2 = o3 = o4 = 0 } else if sel = 01 { o2 = data, o1 = o3 = o4 = 0 } else if .. else if sel = 11 { o4 = data, o1 = o2 = o3 = 0 }
+-- If sel = 00 then { o1 = data, o2 = o3 = o4 = 0 }
+-- else if sel = 01 { o2 = data, o1 = o3 = o4 = 0 }
+-- else if ..
+-- else if sel = 11 { o4 = data, o1 = o2 = o3 = 0 }
 
 entity DEMUX4W1B_CHIP is
   port (
