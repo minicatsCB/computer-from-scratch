@@ -17,4 +17,4 @@ To lint all `.vhdl` files applying the coding style preferred by Jeremiah Leary 
 *Note:* there are some errors that must be fixed manually (i.e. explicit port mapping or "port_map_008" rule).
 
 # Resources
-- [VHDLwhiz](https://vhdlwhiz.com/what-is-vhdl/): articles, tutorials and courses about VHDL. The author is concise, explains in plain English and gives examples. Also, you can get very fast support from they if you had any doubts.
+- [VHDLwhiz](https://vhdlwhiz.com/what-is-vhdl/): articles, tutorials and courses about VHDL. The author is concise, explains in plain English and gives examples. Also, they will provide fast support if you had any doubts.
