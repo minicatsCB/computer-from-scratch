@@ -1,25 +1,47 @@
 library IEEE;
-use IEEE.std_logic_1164.all;
+  use ieee.std_logic_1164.all;
 
 -- If a != b then o = 1 else o = 0
-entity xor2w1b_chip is
-    port (
-        a: in std_logic;
-        b: in std_logic;
-        o: out std_logic
-    );
-end xor2w1b_chip;
 
-architecture parts_1 of xor2w1b_chip is
+entity XOR2W1B_CHIP is
+  port (
+    A : in    std_logic;
+    B : in    std_logic;
+    O : out   std_logic
+  );
+end entity XOR2W1B_CHIP;
+
+architecture PARTS_1 of XOR2W1B_CHIP is
+
 begin
-    o <= (a nand (not b)) nand ((not a) nand b);
-end parts_1;
+
+  O <= (A nand (not B)) nand ((not A) nand B);
+
+end architecture PARTS_1;
 
 -- Alternative implementation using premade NOT chip
-architecture parts_2 of xor2w1b_chip is
-    signal i_1, i_2, o_1, o_2 : std_logic := '0';
+
+architecture PARTS_2 of XOR2W1B_CHIP is
+
+  signal i_1 : std_logic;
+  signal i_2 : std_logic;
+  signal o_1 : std_logic;
+  signal o_2 : std_logic;
+
 begin
-    u0: entity work.not1w1b_chip(parts) port map(b, o_1);
-    u1: entity work.not1w1b_chip(parts) port map(a, o_2);
-    o <= (a nand o_1) nand (o_2 nand b);
-end parts_2;
+
+  U0 : entity work.not1w1b_chip(parts)
+    port map (
+      A => B,
+      O => o_1
+    );
+
+  U1 : entity work.not1w1b_chip(parts)
+    port map (
+      A => A,
+      O => o_2
+    );
+
+  O <= (A nand o_1) nand (o_2 nand B);
+
+end architecture PARTS_2;

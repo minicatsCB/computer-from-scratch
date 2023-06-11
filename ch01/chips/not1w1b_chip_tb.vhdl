@@ -1,34 +1,41 @@
 library IEEE;
-use IEEE.std_logic_1164.all;
+  use ieee.std_logic_1164.all;
 
-entity not1w1b_chip_tb is
-end entity not1w1b_chip_tb;
+entity NOT1W1B_CHIP_TB is
+end entity NOT1W1B_CHIP_TB;
 
-architecture behavior of not1w1b_chip_tb is
-    component not1w1b_chip
-        port (
-            a: in std_logic;
-            o: out std_logic
-        );
-    end component;
+architecture BEHAVIOR of NOT1W1B_CHIP_TB is
 
-    signal a, o : std_logic := '0';
+  component NOT1W1B_CHIP is
+    port (
+      A : in    std_logic;
+      O : out   std_logic
+    );
+  end component;
+
+  signal a, o : std_logic;
 
 begin
 
-    dut: not1w1b_chip port map(a, o);
-    
+  DUT : NOT1W1B_CHIP
+    port map (
+      A => a,
+      O => o
+    );
 
-    stimulus: process
-    begin
-        a <= '0';
-        wait for 50 ns;
+  STIMULUS : process is
+  begin
 
-        a <= '1';
-        wait for 50 ns;
+    a <= '0';
+    wait for 50 ns;
 
-        assert true report "Tests finished";
-        wait;
+    a <= '1';
+    wait for 50 ns;
 
-    end process stimulus;
-end architecture behavior;
+    assert true
+      report "Tests finished";
+    wait;
+
+  end process STIMULUS;
+
+end architecture BEHAVIOR;

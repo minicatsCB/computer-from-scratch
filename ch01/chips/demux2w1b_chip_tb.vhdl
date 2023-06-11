@@ -1,45 +1,58 @@
 library IEEE;
-use IEEE.std_logic_1164.all;
+  use ieee.std_logic_1164.all;
 
-entity demux2w1b_chip_tb is
-end entity demux2w1b_chip_tb;
+entity DEMUX2W1B_CHIP_TB is
+end entity DEMUX2W1B_CHIP_TB;
 
-architecture behavior of demux2w1b_chip_tb is
-    component demux2w1b_chip
-        port (
-            data: in std_logic;
-            sel: in std_logic;
-            o1: out std_logic;
-            o2: out std_logic
-        );
-    end component;
+architecture BEHAVIOR of DEMUX2W1B_CHIP_TB is
 
-    signal data, sel, o1, o2 : std_logic := '0';
+  component DEMUX2W1B_CHIP is
+    port (
+      DATA : in    std_logic;
+      SEL  : in    std_logic;
+      O1   : out   std_logic;
+      O2   : out   std_logic
+    );
+  end component;
+
+  signal data : std_logic;
+  signal sel  : std_logic;
+  signal o1   : std_logic;
+  signal o2   : std_logic;
 
 begin
 
-    dut: demux2w1b_chip port map(data, sel, o1, o2);
+  DUT : DEMUX2W1B_CHIP
+    port map (
+      DATA => data,
+      SEL  => sel,
+      O1   => o1,
+      O2   => o2
+    );
 
-    stimulus: process
-    begin
-        data <= '0';
-        sel <= '0';
-        wait for 50 ns;
+  STIMULUS : process is
+  begin
 
-        data <= '0';
-        sel <= '1';
-        wait for 50 ns;
+    data <= '0';
+    sel  <= '0';
+    wait for 50 ns;
 
-        data <= '1';
-        sel <= '0';
-        wait for 50 ns;
+    data <= '0';
+    sel  <= '1';
+    wait for 50 ns;
 
-        data <= '1';
-        sel <= '1';
-        wait for 50 ns;
+    data <= '1';
+    sel  <= '0';
+    wait for 50 ns;
 
-        assert true report "Tests finished";
-        wait;
+    data <= '1';
+    sel  <= '1';
+    wait for 50 ns;
 
-    end process stimulus;
-end architecture behavior;
+    assert true
+      report "Tests finished";
+    wait;
+
+  end process STIMULUS;
+
+end architecture BEHAVIOR;

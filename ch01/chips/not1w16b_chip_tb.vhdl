@@ -1,38 +1,49 @@
 library IEEE;
-use IEEE.std_logic_1164.all;
-use ieee.numeric_std.all;
+  use ieee.std_logic_1164.all;
+  use ieee.numeric_std.all;
 
-entity not1w16b_chip_tb is
-end entity not1w16b_chip_tb;
+entity NOT1W16B_CHIP_TB is
+end entity NOT1W16B_CHIP_TB;
 
-architecture behavior of not1w16b_chip_tb is
-    component not1w16b_chip
-        port (
-            a: in std_logic_vector(15 downto 0);
-            o: out std_logic_vector(15 downto 0)
-        );
-    end component;
+architecture BEHAVIOR of NOT1W16B_CHIP_TB is
 
-    signal a, o : std_logic_vector(15 downto 0) := (others => '0');
+  component NOT1W16B_CHIP is
+    port (
+      A : in    std_logic_vector(15 downto 0);
+      O : out   std_logic_vector(15 downto 0)
+    );
+  end component;
+
+  signal a, o : std_logic_vector(15 downto 0);
 
 begin
 
-    dut: not1w16b_chip port map(a, o);
-    
+  DUT : NOT1W16B_CHIP
+    port map (
+      A => a,
+      O => o
+    );
 
-    stimulus: process
-        variable sample : std_logic_vector(15 downto 0);
-    begin
-        for idx in 0 to 15 loop
-			-- Convert decimal integer idx to its binary representation
-			sample := std_logic_vector(to_unsigned(idx, 16));
+  STIMULUS : process is
 
-            a <= sample;
-			wait for 50 ns;
-		end loop;
+    variable sample : std_logic_vector(15 downto 0);
 
-        assert true report "Tests finished";
-        wait;
+  begin
 
-    end process stimulus;
-end architecture behavior;
+    for idx in 0 to 15 loop
+
+      -- Convert decimal integer idx to its binary representation
+      sample := std_logic_vector(to_unsigned(idx, 16));
+
+      a <= sample;
+      wait for 50 ns;
+
+    end loop;
+
+    assert true
+      report "Tests finished";
+    wait;
+
+  end process STIMULUS;
+
+end architecture BEHAVIOR;

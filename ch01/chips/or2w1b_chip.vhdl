@@ -1,16 +1,20 @@
 library IEEE;
-use IEEE.std_logic_1164.all;
+  use ieee.std_logic_1164.all;
 
 -- If a = b = 0 then o = 0 else o = 1
-entity or2w1b_chip is
-    port (
-        a: in std_logic;
-        b: in std_logic;
-        o: out std_logic
-    );
-end or2w1b_chip;
 
-architecture parts of or2w1b_chip is
+entity OR2W1B_CHIP is
+  port (
+    A : in    std_logic;
+    B : in    std_logic;
+    O : out   std_logic
+  );
+end entity OR2W1B_CHIP;
+
+architecture PARTS of OR2W1B_CHIP is
+
 begin
-    o <= (a nand a) nand (b nand b);
-end parts;
+
+  O <= (A nand A) nand (B nand B);
+
+end architecture PARTS;

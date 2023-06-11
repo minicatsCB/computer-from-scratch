@@ -1,20 +1,41 @@
 library IEEE;
-use IEEE.std_logic_1164.all;
+  use ieee.std_logic_1164.all;
 
 -- If sel = 0 then { o1 = data, o2 = 0 } else { o1 = 0, o2 = data }
-entity demux2w1b_chip is
-    port (
-        data: in std_logic;
-        sel: in std_logic;
-        o1: out std_logic;
-        o2: out std_logic
-    );
-end demux2w1b_chip;
 
-architecture parts of demux2w1b_chip is
-    signal a_i, a_o : std_logic := '0';
+entity DEMUX2W1B_CHIP is
+  port (
+    DATA : in    std_logic;
+    SEL  : in    std_logic;
+    O1   : out   std_logic;
+    O2   : out   std_logic
+  );
+end entity DEMUX2W1B_CHIP;
+
+architecture PARTS of DEMUX2W1B_CHIP is
+
+  signal a_i, a_o : std_logic;
+
 begin
-    u0: entity work.not1w1b_chip(parts) port map(sel, a_o);
-    u1: entity work.and2w1b_chip(parts_1) port map(data, a_o, o1);
-    u2: entity work.and2w1b_chip(parts_1) port map(data, sel, o2);
-end parts;
+
+  U0 : entity work.not1w1b_chip(parts)
+    port map (
+      A => SEL,
+      O => a_o
+    );
+
+  U1 : entity work.and2w1b_chip(parts_1)
+    port map (
+      A  => DATA,
+      B  => a_o,
+      O1 => O1
+    );
+
+  U2 : entity work.and2w1b_chip(parts_1)
+    port map (
+      A => DATA,
+      B => SEL,
+      O => O2
+    );
+
+end architecture PARTS;

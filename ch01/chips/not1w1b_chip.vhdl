@@ -1,15 +1,19 @@
 library IEEE;
-use IEEE.std_logic_1164.all;
+  use ieee.std_logic_1164.all;
 
 -- If a = 0 then o = 1 else o = 0
-entity not1w1b_chip is
-    port (
-        a: in std_logic;
-        o: out std_logic
-    );
-end not1w1b_chip;
 
-architecture parts of not1w1b_chip is
+entity NOT1W1B_CHIP is
+  port (
+    A : in    std_logic;
+    O : out   std_logic
+  );
+end entity NOT1W1B_CHIP;
+
+architecture PARTS of NOT1W1B_CHIP is
+
 begin
-    o <= a nand a;
-end parts;
+
+  O <= A nand A;
+
+end architecture PARTS;

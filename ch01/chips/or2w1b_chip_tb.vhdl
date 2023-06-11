@@ -1,45 +1,55 @@
 library IEEE;
-use IEEE.std_logic_1164.all;
+  use ieee.std_logic_1164.all;
 
-entity or2w1b_chip_tb is
-end entity or2w1b_chip_tb;
+entity OR2W1B_CHIP_TB is
+end entity OR2W1B_CHIP_TB;
 
-architecture behavior of or2w1b_chip_tb is
-    component or2w1b_chip
-        port (
-            a: in std_logic;
-            b: in std_logic;
-            o: out std_logic
-        );
-    end component;
+architecture BEHAVIOR of OR2W1B_CHIP_TB is
 
-    signal a, b, o : std_logic := '0';
+  component OR2W1B_CHIP is
+    port (
+      A : in    std_logic;
+      B : in    std_logic;
+      O : out   std_logic
+    );
+  end component;
+
+  signal a : std_logic;
+  signal b : std_logic;
+  signal o : std_logic;
 
 begin
 
-    dut: or2w1b_chip port map(a, b, o);
-    
+  DUT : OR2W1B_CHIP
+    port map (
+      A => a,
+      B => b,
+      O => o
+    );
 
-    stimulus: process
-    begin
-        a <= '0';
-        b <= '0';
-        wait for 50 ns;
+  STIMULUS : process is
+  begin
 
-        a <= '0';
-        b <= '1';
-        wait for 50 ns;
+    a <= '0';
+    b <= '0';
+    wait for 50 ns;
 
-        a <= '1';
-        b <= '0';
-        wait for 50 ns;
+    a <= '0';
+    b <= '1';
+    wait for 50 ns;
 
-        a <= '1';
-        b <= '1';
-        wait for 50 ns;
+    a <= '1';
+    b <= '0';
+    wait for 50 ns;
 
-        assert true report "Tests finished";
-        wait;
+    a <= '1';
+    b <= '1';
+    wait for 50 ns;
 
-    end process stimulus;
-end architecture behavior;
+    assert true
+      report "Tests finished";
+    wait;
+
+  end process STIMULUS;
+
+end architecture BEHAVIOR;

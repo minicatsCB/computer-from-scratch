@@ -1,24 +1,38 @@
 library IEEE;
-use IEEE.std_logic_1164.all;
+  use ieee.std_logic_1164.all;
 
 -- If a = b = 1 then o = 1 else o = 0
-entity and2w1b_chip is
-    port (
-        a: in std_logic;
-        b: in std_logic;
-        o: out std_logic
-    );
-end and2w1b_chip;
 
-architecture parts_1 of and2w1b_chip is
+entity AND2W1B_CHIP is
+  port (
+    A : in    std_logic;
+    B : in    std_logic;
+    O : out   std_logic
+  );
+end entity AND2W1B_CHIP;
+
+architecture PARTS_1 of AND2W1B_CHIP is
+
 begin
-    o <= (a nand b) nand (a nand b);
-end parts_1;
+
+  O <= (A nand B) nand (A nand B);
+
+end architecture PARTS_1;
 
 -- Example of multiple architectures
-architecture parts_2 of and2w1b_chip is
-    signal a_i : std_logic := '0';
+
+architecture PARTS_2 of AND2W1B_CHIP is
+
+  signal a_i : std_logic;
+
 begin
-    a_i <= (a nand b);
-    u0: entity work.not1w1b_chip(parts) port map(a_i, o);
-end parts_2;
+
+  a_i <= (A nand B);
+
+  U0 : entity work.not1w1b_chip(parts)
+    port map (
+      A => a_i,
+      O => O
+    );
+
+end architecture PARTS_2;
