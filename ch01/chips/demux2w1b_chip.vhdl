@@ -28,7 +28,7 @@ begin
     port map (
       A  => DATA,
       B  => a_o,
-      O1 => O1
+      O => O1
     );
 
   U2 : entity work.and2w1b_chip(rtl_1)
