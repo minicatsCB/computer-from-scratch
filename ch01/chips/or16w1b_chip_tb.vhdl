@@ -89,6 +89,7 @@ begin
     p <= '0';
     q <= '0';
     wait for 50 ns;
+    assert o = '0' report "Expected: o = (a or b or .. or q) | Received: o = other result" severity failure;
 
     a <= '1';
     b <= '1';
@@ -107,6 +108,7 @@ begin
     p <= '1';
     q <= '1';
     wait for 50 ns;
+    assert o = '1' report "Expected: o = (a or b or .. or q) | Received: o = other result" severity failure;
 
     a <= '0';
     b <= '1';
@@ -125,6 +127,7 @@ begin
     p <= '0';
     q <= '0';
     wait for 50 ns;
+    assert o = '1' report "Expected: o = (a or b or .. or q) | Received: o = other result" severity failure;
 
     a <= '0';
     b <= '1';
@@ -143,6 +146,7 @@ begin
     p <= '0';
     q <= '0';
     wait for 50 ns;
+    assert o = '1' report "Expected: o = (a or b or .. or q) | Received: o = other result" severity failure;
 
     assert true
       report "Tests finished";
