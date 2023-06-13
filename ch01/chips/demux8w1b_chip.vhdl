@@ -49,10 +49,10 @@ begin
     port map (
       DATA => b_o,
       SEL  => SEL(1 downto 0),
-      O5   => O5,
-      O6   => O6,
-      O7   => O7,
-      O8   => O8
+      O1   => O5,
+      O2   => O6,
+      O3   => O7,
+      O4   => O8
     );
 
 end architecture rtl;

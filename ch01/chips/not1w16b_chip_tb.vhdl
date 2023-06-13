@@ -37,6 +37,7 @@ begin
 
       a <= sample;
       wait for 50 ns;
+      assert o = (not a) report "Expected: o = not a | Received: o = other result" severity failure;
 
     end loop;
 

@@ -63,10 +63,91 @@ begin
       data <= '0';
       sel  <= count;
       wait for 50 ns;
+      assert o1 = '0' report "Expected: o1 = 0 | Received: o1 = other result" severity failure;
+      assert o2 = '0'report "Expected: o2 = 0 | Received: o2 = other result" severity failure;
+      assert o3 = '0' report "Expected: o3 = 0 | Received: o3 = other result" severity failure;
+      assert o4 = '0'report "Expected: o4 = 0 | Received: o4 = other result" severity failure;
+      assert o5 = '0' report "Expected: o5 = 0 | Received: o5 = other result" severity failure;
+      assert o6 = '0'report "Expected: o6 = 0 | Received: o6 = other result" severity failure;
+      assert o7 = '0' report "Expected: o7 = 0 | Received: o7 = other result" severity failure;
+      assert o8 = '0'report "Expected: o8 = 0 | Received: o8 = other result" severity failure;
 
       data <= '1';
       sel  <= count;
       wait for 50 ns;
+      if sel = "000" then
+        assert o1 = '1' report "Expected: o1 = 1 | Received: o1 = other result" severity failure;
+        assert o2 = '0'report "Expected: o2 = 0 | Received: o2 = other result" severity failure;
+        assert o3 = '0' report "Expected: o3 = 0 | Received: o3 = other result" severity failure;
+        assert o4 = '0'report "Expected: o4 = 0 | Received: o4 = other result" severity failure;
+        assert o5 = '0' report "Expected: o5 = 0 | Received: o5 = other result" severity failure;
+        assert o6 = '0'report "Expected: o6 = 0 | Received: o6 = other result" severity failure;
+        assert o7 = '0' report "Expected: o7 = 0 | Received: o7 = other result" severity failure;
+        assert o8 = '0'report "Expected: o8 = 0 | Received: o8 = other result" severity failure;
+      elsif sel = "001" then
+        assert o1 = '0' report "Expected: o1 = 1 | Received: o1 = other result" severity failure;
+        assert o2 = '1'report "Expected: o2 = 1 | Received: o2 = other result" severity failure;
+        assert o3 = '0' report "Expected: o3 = 0 | Received: o3 = other result" severity failure;
+        assert o4 = '0'report "Expected: o4 = 0 | Received: o4 = other result" severity failure;
+        assert o5 = '0' report "Expected: o5 = 0 | Received: o5 = other result" severity failure;
+        assert o6 = '0'report "Expected: o6 = 0 | Received: o6 = other result" severity failure;
+        assert o7 = '0' report "Expected: o7 = 0 | Received: o7 = other result" severity failure;
+        assert o8 = '0'report "Expected: o8 = 0 | Received: o8 = other result" severity failure;
+      elsif sel = "010" then
+        assert o1 = '0' report "Expected: o1 = 0 | Received: o1 = other result" severity failure;
+        assert o2 = '0'report "Expected: o2 = 0 | Received: o2 = other result" severity failure;
+        assert o3 = '1' report "Expected: o3 = 1 | Received: o3 = other result" severity failure;
+        assert o4 = '0'report "Expected: o4 = 0 | Received: o4 = other result" severity failure;
+        assert o5 = '0' report "Expected: o5 = 0 | Received: o5 = other result" severity failure;
+        assert o6 = '0'report "Expected: o6 = 0 | Received: o6 = other result" severity failure;
+        assert o7 = '0' report "Expected: o7 = 0 | Received: o7 = other result" severity failure;
+        assert o8 = '0'report "Expected: o8 = 0 | Received: o8 = other result" severity failure;
+      elsif sel = "011" then
+        assert o1 = '0' report "Expected: o1 = 0 | Received: o1 = other result" severity failure;
+        assert o2 = '0'report "Expected: o2 = 0 | Received: o2 = other result" severity failure;
+        assert o3 = '0' report "Expected: o3 = 0 | Received: o3 = other result" severity failure;
+        assert o4 = '1'report "Expected: o4 = 1 | Received: o4 = other result" severity failure;
+        assert o5 = '0' report "Expected: o5 = 0 | Received: o5 = other result" severity failure;
+        assert o6 = '0'report "Expected: o6 = 0 | Received: o6 = other result" severity failure;
+        assert o7 = '0' report "Expected: o7 = 0 | Received: o7 = other result" severity failure;
+        assert o8 = '0'report "Expected: o8 = 0 | Received: o8 = other result" severity failure;
+      elsif sel = "100" then
+        assert o1 = '0' report "Expected: o1 = 0 | Received: o1 = other result" severity failure;
+        assert o2 = '0'report "Expected: o2 = 0 | Received: o2 = other result" severity failure;
+        assert o3 = '0' report "Expected: o3 = 0 | Received: o3 = other result" severity failure;
+        assert o4 = '0'report "Expected: o4 = 0 | Received: o4 = other result" severity failure;
+        assert o5 = '1' report "Expected: o5 = 1 | Received: o5 = other result" severity failure;
+        assert o6 = '0'report "Expected: o6 = 0 | Received: o6 = other result" severity failure;
+        assert o7 = '0' report "Expected: o7 = 0 | Received: o7 = other result" severity failure;
+        assert o8 = '0'report "Expected: o8 = 0 | Received: o8 = other result" severity failure;
+      elsif sel = "101" then
+        assert o1 = '0' report "Expected: o1 = 0 | Received: o1 = other result" severity failure;
+        assert o2 = '0'report "Expected: o2 = 0 | Received: o2 = other result" severity failure;
+        assert o3 = '0' report "Expected: o3 = 0 | Received: o3 = other result" severity failure;
+        assert o4 = '0'report "Expected: o4 = 0 | Received: o4 = other result" severity failure;
+        assert o5 = '0' report "Expected: o5 = 0 | Received: o5 = other result" severity failure;
+        assert o6 = '1'report "Expected: o6 = 1 | Received: o6 = other result" severity failure;
+        assert o7 = '0' report "Expected: o7 = 0 | Received: o7 = other result" severity failure;
+        assert o8 = '0'report "Expected: o8 = 0 | Received: o8 = other result" severity failure;
+      elsif sel = "110" then
+        assert o1 = '0' report "Expected: o1 = 0 | Received: o1 = other result" severity failure;
+        assert o2 = '0'report "Expected: o2 = 0 | Received: o2 = other result" severity failure;
+        assert o3 = '0' report "Expected: o3 = 0 | Received: o3 = other result" severity failure;
+        assert o4 = '0'report "Expected: o4 = 0 | Received: o4 = other result" severity failure;
+        assert o5 = '0' report "Expected: o5 = 0 | Received: o5 = other result" severity failure;
+        assert o6 = '0'report "Expected: o6 = 0 | Received: o6 = other result" severity failure;
+        assert o7 = '1' report "Expected: o7 = 1 | Received: o7 = other result" severity failure;
+        assert o8 = '0'report "Expected: o8 = 0 | Received: o8 = other result" severity failure;
+      elsif sel = "111" then
+        assert o1 = '0' report "Expected: o1 = 0 | Received: o1 = other result" severity failure;
+        assert o2 = '0'report "Expected: o2 = 0 | Received: o2 = other result" severity failure;
+        assert o3 = '0' report "Expected: o3 = 0 | Received: o3 = other result" severity failure;
+        assert o4 = '0'report "Expected: o4 = 0 | Received: o4 = other result" severity failure;
+        assert o5 = '0' report "Expected: o5 = 0 | Received: o5 = other result" severity failure;
+        assert o6 = '0'report "Expected: o6 = 0 | Received: o6 = other result" severity failure;
+        assert o7 = '0' report "Expected: o7 = 0 | Received: o7 = other result" severity failure;
+        assert o8 = '1'report "Expected: o8 = 1 | Received: o8 = other result" severity failure;
+      end if;
 
     end loop;
 

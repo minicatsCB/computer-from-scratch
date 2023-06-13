@@ -19,9 +19,9 @@ begin
 
     U0 : entity work.and2w1b_chip(rtl_1)
       port map (
-        A(idx) => A,
-        B(idx) => B,
-        O(idx) => O
+        A => A(idx),
+        B => B(idx),
+        O => O(idx)
       );
 
   end generate GEN;
