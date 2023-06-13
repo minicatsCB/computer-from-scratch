@@ -44,7 +44,7 @@ begin
       E   => e,
       F   => f,
       G   => g,
-      G   => h,
+      H   => h,
       SEL => sel,
       O   => o
     );
