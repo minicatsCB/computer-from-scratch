@@ -29,12 +29,12 @@ begin
 
   DUT : DEMUX4W1B_CHIP
     port map (
-DATA => data,
- SEL => sel,
- O1 => o1,
- O2 => o2,
- O3 => o3,
- O4 => o4
+      DATA => data,
+      SEL => sel,
+      O1 => o1,
+      O2 => o2,
+      O3 => o3,
+      O4 => o4
     );
 
   STIMULUS : process is
