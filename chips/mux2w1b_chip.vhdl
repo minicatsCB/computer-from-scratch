@@ -14,7 +14,7 @@ end entity MUX2W1B_CHIP;
 
 -- Example of using "premade" entities
 
-architecture rtl of MUX2W1B_CHIP is
+architecture RTL of MUX2W1B_CHIP is
 
   signal a_i : std_logic;
   signal b_i : std_logic;
@@ -52,4 +52,4 @@ begin
       O => O
     );
 
-end architecture rtl;
+end architecture RTL;

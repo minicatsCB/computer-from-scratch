@@ -11,7 +11,7 @@ entity OR2W16B_CHIP is
   );
 end entity OR2W16B_CHIP;
 
-architecture rtl of OR2W16B_CHIP is
+architecture RTL of OR2W16B_CHIP is
 
 begin
 
@@ -26,4 +26,4 @@ begin
 
   end generate GEN;
 
-end architecture rtl;
+end architecture RTL;

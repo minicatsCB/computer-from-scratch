@@ -18,7 +18,7 @@ entity MUX8W16B_CHIP is
   );
 end entity MUX8W16B_CHIP;
 
-architecture rtl of MUX8W16B_CHIP is
+architecture RTL of MUX8W16B_CHIP is
 
   signal a_o, b_o : std_logic_vector(15 downto 0);
 
@@ -52,4 +52,4 @@ begin
       O   => O
     );
 
-end architecture rtl;
+end architecture RTL;

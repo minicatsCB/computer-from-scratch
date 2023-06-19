@@ -11,10 +11,10 @@ entity AND2W1B_CHIP is
   );
 end entity AND2W1B_CHIP;
 
-architecture rtl of AND2W1B_CHIP is
+architecture RTL of AND2W1B_CHIP is
 
 begin
 
   O <= (A nand B) nand (A nand B);
 
-end architecture rtl;
+end architecture RTL;

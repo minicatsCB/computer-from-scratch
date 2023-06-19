@@ -21,7 +21,7 @@ entity DEMUX8W1B_CHIP is
   );
 end entity DEMUX8W1B_CHIP;
 
-architecture rtl of DEMUX8W1B_CHIP is
+architecture RTL of DEMUX8W1B_CHIP is
 
   signal a_o, b_o : std_logic;
 
@@ -55,4 +55,4 @@ begin
       O4   => O8
     );
 
-end architecture rtl;
+end architecture RTL;

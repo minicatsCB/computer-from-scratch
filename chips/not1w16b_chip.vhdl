@@ -10,7 +10,7 @@ entity NOT1W16B_CHIP is
   );
 end entity NOT1W16B_CHIP;
 
-architecture rtl of NOT1W16B_CHIP is
+architecture RTL of NOT1W16B_CHIP is
 
 begin
 
@@ -24,4 +24,4 @@ begin
 
   end generate GEN;
 
-end architecture rtl;
+end architecture RTL;

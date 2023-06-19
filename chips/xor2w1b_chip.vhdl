@@ -11,10 +11,10 @@ entity XOR2W1B_CHIP is
   );
 end entity XOR2W1B_CHIP;
 
-architecture rtl of XOR2W1B_CHIP is
+architecture RTL of XOR2W1B_CHIP is
 
 begin
 
   O <= (A nand (not B)) nand ((not A) nand B);
 
-end architecture rtl;
+end architecture RTL;

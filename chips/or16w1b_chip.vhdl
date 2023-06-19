@@ -25,7 +25,7 @@ entity OR16W1B_CHIP is
   );
 end entity OR16W1B_CHIP;
 
-architecture rtl of OR16W1B_CHIP is
+architecture RTL of OR16W1B_CHIP is
 
   signal a_o      : std_logic;
   signal b_o      : std_logic;
@@ -148,4 +148,4 @@ begin
       O => O
     );
 
-end architecture rtl;
+end architecture RTL;
