@@ -17,7 +17,7 @@ begin
 
   GEN : for idx in 0 to 15 generate
 
-    U0 : entity work.and2w1b_chip(rtl_1)
+    U0 : entity work.and2w1b_chip(rtl)
       port map (
         A => A(idx),
         B => B(idx),

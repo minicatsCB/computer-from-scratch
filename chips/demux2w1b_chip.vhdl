@@ -24,14 +24,14 @@ begin
       O => a_o
     );
 
-  U1 : entity work.and2w1b_chip(rtl_1)
+  U1 : entity work.and2w1b_chip(rtl)
     port map (
       A  => DATA,
       B  => a_o,
       O => O1
     );
 
-  U2 : entity work.and2w1b_chip(rtl_1)
+  U2 : entity work.and2w1b_chip(rtl)
     port map (
       A => DATA,
       B => SEL,

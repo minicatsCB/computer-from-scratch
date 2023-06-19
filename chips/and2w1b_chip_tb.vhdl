@@ -6,20 +6,21 @@ end entity AND2W1B_CHIP_TB;
 
 architecture BEHAVIOR of AND2W1B_CHIP_TB is
 
+  component HALFADDER2W1B_CHIP is
+    port (
+      A : in    std_logic;
+      B : in    std_logic;
+      O : out   std_logic
+    );
+  end component;
+
   signal a : std_logic;
   signal b : std_logic;
   signal o : std_logic;
 
 begin
 
-  DUT_1 : entity work.and2w1b_chip(rtl_1)
-    port map (
-      A => a,
-      B => b,
-      O => o
-    );
-
-  DUT_2 : entity work.and2w1b_chip(rtl_2)
+  DUT_1 : and2w1b_chip(rtl)
     port map (
       A => a,
       B => b,

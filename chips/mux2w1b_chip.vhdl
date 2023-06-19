@@ -31,14 +31,14 @@ begin
       O => a_o
     );
 
-  U1 : entity work.and2w1b_chip(rtl_1)
+  U1 : entity work.and2w1b_chip(rtl)
     port map (
       A => A,
       B => a_o,
       O => b_o
     );
 
-  U2 : entity work.and2w1b_chip(rtl_1)
+  U2 : entity work.and2w1b_chip(rtl)
     port map (
       A => B,
       B => SEL,
