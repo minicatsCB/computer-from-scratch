@@ -6,20 +6,21 @@ end entity XOR2W1B_CHIP_TB;
 
 architecture BEHAVIOR of XOR2W1B_CHIP_TB is
 
+  component OR2W1B_CHIP is
+    port (
+      A : in    std_logic;
+      B : in    std_logic;
+      O : out   std_logic
+    );
+  end component;
+
   signal a : std_logic;
   signal b : std_logic;
   signal o : std_logic;
 
 begin
 
-  DUT_1 : entity work.xor2w1b_chip(rtl_1)
-    port map (
-      A => a,
-      B => b,
-      O => o
-    );
-
-  DUT_2 : entity work.xor2w1b_chip(rtl_2)
+  DUT : xor2w1b_chip(rtl)
     port map (
       A => a,
       B => b,
