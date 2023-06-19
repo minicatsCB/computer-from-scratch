@@ -71,22 +71,38 @@ begin
       sel <= count;
       wait for 50 ns;
 
-      if sel = "000" then
-        assert o = a report "Expected: o = a | Received: o = other result" severity failure;
-      elsif sel = "001" then
-        assert o = b report "Expected: o = b | Received: o = other result" severity failure;
-      elsif sel = "010" then
-        assert o = c report "Expected: o = c | Received: o = other result" severity failure;
-      elsif sel = "011" then
-        assert o = d report "Expected: o = d | Received: o = other result" severity failure;
-      elsif sel = "100" then
-        assert o = e report "Expected: o = e | Received: o = other result" severity failure;
-      elsif sel = "101" then
-        assert o = f report "Expected: o = f | Received: o = other result" severity failure;
-      elsif sel = "110" then
-        assert o = g report "Expected: o = g | Received: o = other result" severity failure;
-      elsif sel = "111" then
-        assert o = h report "Expected: o = h | Received: o = other result" severity failure;
+      if (sel = "000") then
+        assert o = a
+          report "Expected: o = a | Received: o = other result"
+          severity failure;
+      elsif (sel = "001") then
+        assert o = b
+          report "Expected: o = b | Received: o = other result"
+          severity failure;
+      elsif (sel = "010") then
+        assert o = c
+          report "Expected: o = c | Received: o = other result"
+          severity failure;
+      elsif (sel = "011") then
+        assert o = d
+          report "Expected: o = d | Received: o = other result"
+          severity failure;
+      elsif (sel = "100") then
+        assert o = e
+          report "Expected: o = e | Received: o = other result"
+          severity failure;
+      elsif (sel = "101") then
+        assert o = f
+          report "Expected: o = f | Received: o = other result"
+          severity failure;
+      elsif (sel = "110") then
+        assert o = g
+          report "Expected: o = g | Received: o = other result"
+          severity failure;
+      elsif (sel = "111") then
+        assert o = h
+          report "Expected: o = h | Received: o = other result"
+          severity failure;
       end if;
 
     end loop;

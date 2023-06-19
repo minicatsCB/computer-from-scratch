@@ -33,23 +33,30 @@ begin
     a <= '0';
     b <= '0';
     wait for 50 ns;
-    assert o = '0' report "Expected: o = 0 | Received: o = 1" severity failure;
+    assert o = '0'
+      report "Expected: o = 0 | Received: o = 1"
+      severity failure;
 
     a <= '0';
     b <= '1';
     wait for 50 ns;
-    assert o = '1' report "Expected: o = 1 | Received: o = 0" severity failure;
+    assert o = '1'
+      report "Expected: o = 1 | Received: o = 0"
+      severity failure;
 
     a <= '1';
     b <= '0';
     wait for 50 ns;
-    assert o = '1' report "Expected: o = 1 | Received: o = 0" severity failure;
-
+    assert o = '1'
+      report "Expected: o = 1 | Received: o = 0"
+      severity failure;
 
     a <= '1';
     b <= '1';
     wait for 50 ns;
-    assert o = '1' report "Expected: o = 1 | Received: o = 0" severity failure;
+    assert o = '1'
+      report "Expected: o = 1 | Received: o = 0"
+      severity failure;
 
     assert true
       report "Tests finished";

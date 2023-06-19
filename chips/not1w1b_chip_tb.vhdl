@@ -28,13 +28,18 @@ begin
 
     a <= '0';
     wait for 50 ns;
-    assert o = '1' report "Expected: o = 1 | Received: o = other result" severity failure;
+    assert o = '1'
+      report "Expected: o = 1 | Received: o = other result"
+      severity failure;
 
     a <= '1';
     wait for 50 ns;
-    assert o = '0' report "Expected: o = 0 | Received: o = other result" severity failure;
+    assert o = '0'
+      report "Expected: o = 0 | Received: o = other result"
+      severity failure;
 
-    assert true report "Tests finished";
+    assert true
+      report "Tests finished";
     wait;
 
   end process STIMULUS;

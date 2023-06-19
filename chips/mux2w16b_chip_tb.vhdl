@@ -37,25 +37,33 @@ begin
     b   <= "1111111111111111";
     sel <= '0';
     wait for 50 ns;
-    assert o = "0000000000000000" report "Expected: o = 0000000000000000 | Received: o = other result" severity failure;
+    assert o = "0000000000000000"
+      report "Expected: o = 0000000000000000 | Received: o = other result"
+      severity failure;
 
     a   <= "0000000000000000";
     b   <= "1111111111111111";
     sel <= '1';
     wait for 50 ns;
-    assert o = "1111111111111111" report "Expected: o = 0000000000000000 | Received: o = other result" severity failure;
+    assert o = "1111111111111111"
+      report "Expected: o = 0000000000000000 | Received: o = other result"
+      severity failure;
 
     a   <= "0001110001010100";
     b   <= "0001110101011001";
     sel <= '0';
     wait for 50 ns;
-    assert o = "0001110001010100" report "Expected: o = 0000000000000000 | Received: o = other result" severity failure;
+    assert o = "0001110001010100"
+      report "Expected: o = 0000000000000000 | Received: o = other result"
+      severity failure;
 
     a   <= "0001110001010100";
     b   <= "0001110101011001";
     sel <= '1';
     wait for 50 ns;
-    assert o = "0001110101011001" report "Expected: o = 0000000000000000 | Received: o = other result" severity failure;
+    assert o = "0001110101011001"
+      report "Expected: o = 0000000000000000 | Received: o = other result"
+      severity failure;
 
     assert true
       report "Tests finished";

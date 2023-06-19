@@ -36,26 +36,42 @@ begin
     data <= '0';
     sel  <= '0';
     wait for 50 ns;
-    assert o1 = '0' report "Expected: o1 = 0 | Received: o1 = other result" severity failure;
-    assert o2 = '0'report "Expected: o2 = 0 | Received: o2 = other result" severity failure;
+    assert o1 = '0'
+      report "Expected: o1 = 0 | Received: o1 = other result"
+      severity failure;
+    assert o2 = '0'
+      report "Expected: o2 = 0 | Received: o2 = other result"
+      severity failure;
 
     data <= '0';
     sel  <= '1';
     wait for 50 ns;
-    assert o1 = '0' report "Expected: o1 = 0 | Received: o1 = other result" severity failure;
-    assert o2 = '0'report "Expected: o2 = 0 | Received: o2 = other result" severity failure;
-    
+    assert o1 = '0'
+      report "Expected: o1 = 0 | Received: o1 = other result"
+      severity failure;
+    assert o2 = '0'
+      report "Expected: o2 = 0 | Received: o2 = other result"
+      severity failure;
+
     data <= '1';
     sel  <= '0';
     wait for 50 ns;
-    assert o1 = '1' report "Expected: o1 = 1 | Received: o1 = other result" severity failure;
-    assert o2 = '0'report "Expected: o2 = 0 | Received: o2 = other result" severity failure;
+    assert o1 = '1'
+      report "Expected: o1 = 1 | Received: o1 = other result"
+      severity failure;
+    assert o2 = '0'
+      report "Expected: o2 = 0 | Received: o2 = other result"
+      severity failure;
 
     data <= '1';
     sel  <= '1';
     wait for 50 ns;
-    assert o1 = '0' report "Expected: o1 = 0 | Received: o1 = other result" severity failure;
-    assert o2 = '1'report "Expected: o2 = 1 | Received: o2 = other result" severity failure;
+    assert o1 = '0'
+      report "Expected: o1 = 0 | Received: o1 = other result"
+      severity failure;
+    assert o2 = '1'
+      report "Expected: o2 = 1 | Received: o2 = other result"
+      severity failure;
 
     assert true
       report "Tests finished";
