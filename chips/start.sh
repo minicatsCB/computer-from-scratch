@@ -22,6 +22,7 @@ function help {
   echo -e "  -w,     Show unit WAVES"
   echo -e "  -z,     Process unit ENTIRELY (from syntax check to waves visualization)"
   echo -e "  -c,     CLEAN project"
+  echo -e "  -l,     LINT file"
   echo -e "  -h,     Prints this HELP\n"
   example
 }
@@ -32,7 +33,7 @@ if [ $# -eq 0 ]
     exit 1
 fi
 
-while getopts ":n:saerwzch" FLAG;
+while getopts ":n:saerwzclh" FLAG;
 do
     case "${FLAG}" in
         n) name=$OPTARG
@@ -65,6 +66,9 @@ do
          c) echo -e "Cleaning project"
             rm *.vcd
             rm *.cf
+         ;;
+         l) echo -e "Linting file"
+            vsg -f ${name}.vhdl --style jcl --fix --configuration vsg.config.json
          ;;
         h) help
            ;;
