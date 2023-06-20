@@ -14,7 +14,7 @@ end entity ADDER2W16B_CHIP;
 
 architecture RTL of ADDER2W16B_CHIP is
 
-  signal carry : std_logic_vector(16 downto 0);
+  signal carry : std_logic_vector(15 downto 0);
 
 begin
 
