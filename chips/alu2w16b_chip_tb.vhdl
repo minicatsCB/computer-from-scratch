@@ -141,7 +141,7 @@ begin
     f <= '0';
     no <= '1';
     wait for 50 ns;
-    assert o = "0000000000000000 " report "Expected: o = 0000000000000000  | Received: o = other result" severity failure;
+    assert o = "0000000000000000" report "Expected: o = 0000000000000000 | Received: o = other result" severity failure;
     assert zr = '1' report "Expected: zr = 1 | Received: zr = other result" severity failure;
     assert ng = '0' report "Expected: ng = 0 | Received: ng = other result" severity failure;
 
@@ -180,8 +180,8 @@ begin
     f <= '1';
     no <= '1';
     wait for 50 ns;
-    assert o = "0000000000000001" report "Expected: o = 0000000000000001 | Received: o = other result" severity failure;
-    assert zr = '0' report "Expected: zr = 0 | Received: zr = other result" severity failure;
+    assert o = "0000000000000000" report "Expected: o = 0000000000000000 | Received: o = other result" severity failure;
+    assert zr = '1' report "Expected: zr = 1 | Received: zr = other result" severity failure;
     assert ng = '0' report "Expected: ng = 0 | Received: ng = other result" severity failure;
 
     x <= "0000000000000000";
@@ -272,7 +272,7 @@ begin
     no <= '0';
     wait for 50 ns;
     assert o = "0000000000000000" report "Expected: o = 0000000000000000 | Received: o = other result" severity failure;
-    assert zr = '0' report "Expected: zr = 0 | Received: zr = other result" severity failure;
+    assert zr = '1' report "Expected: zr = 1 | Received: zr = other result" severity failure;
     assert ng = '0' report "Expected: ng = 0 | Received: ng = other result" severity failure;
 
     x <= "0000000000000000";
