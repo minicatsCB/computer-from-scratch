@@ -6,7 +6,7 @@ end entity AND2W1B_CHIP_TB;
 
 architecture BEHAVIOR of AND2W1B_CHIP_TB is
 
-  component HALFADDER2W1B_CHIP is
+  component AND2W1B_CHIP is
     port (
       A : in    std_logic;
       B : in    std_logic;
