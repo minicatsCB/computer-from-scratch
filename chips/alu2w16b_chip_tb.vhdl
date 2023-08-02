@@ -34,6 +34,18 @@ architecture BEHAVIOR of ALU2W16B_CHIP_TB is
   signal zr : std_logic;
   signal ng : std_logic;
 
+  function to_string (vec: std_logic_vector) return string
+    is
+      variable result : string (1 to vec'length) := (others => NUL);
+      variable j : integer := 1; 
+    begin
+      for i in vec'range loop
+        result(j) := std_logic'image(vec(i))(2);
+        j := j + 1;
+      end loop;
+      return result;
+    end function;
+
 begin
 
   DUT : ALU2W16B_CHIP
@@ -121,13 +133,13 @@ begin
       wait for 50 ns;
       --  Check the outputs.
       assert o = patterns(i).o
-      report "bad o result"
+      report "[Error] o[" & INTEGER'IMAGE(i) & "] >>> Expected: " & to_string(patterns(i).o) & " / Received: " & to_string(o)
       severity failure;
     assert zr = patterns(i).zr
-      report "bad zr result"
+      report "[Error] zr[" & INTEGER'IMAGE(i) & "] >>> Expected: " & std_logic'image(patterns(i).zr) & " / Received: " & std_logic'image(zr)
       severity failure;
     assert ng = patterns(i).ng
-      report "bad ng result"
+      report "[Error] ng[" & INTEGER'IMAGE(i) & "] >>> Expected: " & std_logic'image(patterns(i).ng) & " / Received: " & std_logic'image(ng)
       severity failure;
     end loop;
 
