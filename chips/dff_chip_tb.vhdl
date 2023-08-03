@@ -31,8 +31,8 @@ begin
       NQ   => nq
     );
 
-    ext: entity work.HEARTBEAT(RTL)
-    port map (ORIG_CLK => clk);
+  MASTER_CLK : entity work.HEARTBEAT(RTL)
+    port map (LEVEL => clk);
 
   -- Testbench sequence
   STIMULUS : process is
