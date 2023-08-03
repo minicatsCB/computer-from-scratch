@@ -49,7 +49,7 @@ do
            ghdl -e ${name}
            ;;
         r) echo -e "Running ${name}"
-           ghdl -r ${name} --vcd=${name}.vcd
+           ghdl -r ${name} --vcd=${name}.vcd --stop-time=2000ns
            ;;
         w) echo -e "Opening waves of ${name}"
            gtkwave.exe ${name}.vcd  # Assumes access to Windows executable
@@ -60,7 +60,7 @@ do
            ghdl -s ${name}_tb.vhdl
            ghdl -a ${name}_tb.vhdl
            ghdl -e ${name}_tb
-           ghdl -r ${name}_tb --vcd=${name}.vcd
+           ghdl -r ${name}_tb --vcd=${name}.vcd --stop-time=2000ns
            gtkwave.exe ${name}.vcd  # Assumes access to Windows executable
            ;;
          c) echo -e "Cleaning project"
