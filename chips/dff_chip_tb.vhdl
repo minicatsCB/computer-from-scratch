@@ -16,10 +16,7 @@ architecture BEHAVIOR of DFF_CHIP_TB is
     );
   end component;
 
-  constant clockfrequency : integer := 100e6; -- 100 MHz
-  constant clockperiod    : time    := 1000 ms / clockfrequency;
-
-  signal clk              : std_logic := '0';
+  signal clk              : std_logic;
   signal data             : std_logic;
   signal q                : std_logic;
   signal nq               : std_logic;
@@ -34,8 +31,8 @@ begin
       NQ   => nq
     );
 
-  -- Process for generating the clock
-  clk <= not clk after clockperiod / 2;
+    ext: entity work.HEARTBEAT(RTL)
+    port map (ORIG_CLK => clk);
 
   -- Testbench sequence
   STIMULUS : process is
