@@ -20,7 +20,7 @@ architecture BEHAVIOR of AND2W1B_CHIP_TB is
 
 begin
 
-  DUT_1 : and2w1b_chip(rtl)
+  DUT_1 : entity work.and2w1b_chip(rtl)
     port map (
       A => a,
       B => b,
