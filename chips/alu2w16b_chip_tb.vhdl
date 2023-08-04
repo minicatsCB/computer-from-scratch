@@ -69,7 +69,7 @@ begin
       NG => ng
     );
 
-  process is
+  STIMULUS : process is
 
     type pattern_type is record
       x  : std_logic_vector(15 downto 0);
@@ -161,6 +161,6 @@ begin
       severity note;
     wait;
 
-  end process;
+  end process STIMULUS;
 
 end architecture BEHAVIOR;
