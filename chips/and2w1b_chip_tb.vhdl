@@ -50,7 +50,6 @@ begin
     for i in patterns'range loop
       a  <= patterns(i).a;
       b  <= patterns(i).b;
-      o <= patterns(i).o;
       wait for 50 ns;
       assert o = patterns(i).o
         report "[Error] o[" & integer'image(i) & "] >>> Expected: " & std_logic'image(patterns(i).o) & " / Received: " & std_logic'image(o)
