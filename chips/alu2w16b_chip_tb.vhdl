@@ -34,17 +34,23 @@ architecture BEHAVIOR of ALU2W16B_CHIP_TB is
   signal zr : std_logic;
   signal ng : std_logic;
 
-  function to_string (vec: std_logic_vector) return string
-    is
-      variable result : string (1 to vec'length) := (others => NUL);
-      variable j : integer := 1; 
-    begin
-      for i in vec'range loop
-        result(j) := std_logic'image(vec(i))(2);
-        j := j + 1;
-      end loop;
-      return result;
-    end function;
+  function to_string (vec: std_logic_vector) return string is
+
+    variable result : string (1 to vec'length) := (others => NUL);
+    variable j      : integer                  := 1;
+
+  begin
+
+    for i in vec'range loop
+
+      result(j) := std_logic'image(vec(i))(2);
+      j         := j + 1;
+
+    end loop;
+
+    return result;
+
+  end function;
 
 begin
 
@@ -63,23 +69,26 @@ begin
       NG => ng
     );
 
-  process
+  process is
+
     type pattern_type is record
-       x  : std_logic_vector(15 downto 0);
-       y  : std_logic_vector(15 downto 0);
-       zx : std_logic;
-       nx : std_logic;
-       zy : std_logic;
-       ny : std_logic;
-       f  : std_logic;
-       no : std_logic;
-       o  : std_logic_vector(15 downto 0);
-       zr : std_logic;
-       ng : std_logic;
+      x  : std_logic_vector(15 downto 0);
+      y  : std_logic_vector(15 downto 0);
+      zx : std_logic;
+      nx : std_logic;
+      zy : std_logic;
+      ny : std_logic;
+      f  : std_logic;
+      no : std_logic;
+      o  : std_logic_vector(15 downto 0);
+      zr : std_logic;
+      ng : std_logic;
     end record pattern_type;
+
     type pattern_array is array (natural range <>) of pattern_type;
 
-    constant patterns : pattern_array := (
+    constant patterns : pattern_array :=
+    (
       1 => ("0000000000000000", "1111111111111111", '1', '0', '1', '0', '1', '0', "0000000000000000", '1', '0'),
       2 => ("0000000000000000", "1111111111111111", '1', '1', '1', '1', '1', '1', "0000000000000001", '0', '0'),
       3 => ("0000000000000000", "1111111111111111", '1', '1', '1', '0', '1', '0', "1111111111111111", '0', '1'),
@@ -116,10 +125,13 @@ begin
       34 => ("0000000000010001", "0000000000000011", '0', '0', '0', '1', '1', '1', "1111111111110010", '0', '1'),
       35 => ("0000000000010001", "0000000000000011", '0', '0', '0', '0', '0', '0', "0000000000000001", '0', '0'),
       36 => ("0000000000010001", "0000000000000011", '0', '1', '0', '1', '0', '1', "0000000000010011", '0', '0')
-      );
+    );
+
   begin
+
     --  Check each pattern.
     for i in patterns'range loop
+
       --  Set the inputs.
       x  <= patterns(i).x;
       y  <= patterns(i).y;
@@ -133,18 +145,22 @@ begin
       wait for 50 ns;
       --  Check the outputs.
       assert o = patterns(i).o
-      report "[Error] o[" & INTEGER'IMAGE(i) & "] >>> Expected: " & to_string(patterns(i).o) & " / Received: " & to_string(o)
-      severity failure;
-    assert zr = patterns(i).zr
-      report "[Error] zr[" & INTEGER'IMAGE(i) & "] >>> Expected: " & std_logic'image(patterns(i).zr) & " / Received: " & std_logic'image(zr)
-      severity failure;
-    assert ng = patterns(i).ng
-      report "[Error] ng[" & INTEGER'IMAGE(i) & "] >>> Expected: " & std_logic'image(patterns(i).ng) & " / Received: " & std_logic'image(ng)
-      severity failure;
+        report "[Error] o[" & integer'image(i) & "] >>> Expected: " & to_string(patterns(i).o) & " / Received: " & to_string(o)
+        severity failure;
+      assert zr = patterns(i).zr
+        report "[Error] zr[" & integer'image(i) & "] >>> Expected: " & std_logic'image(patterns(i).zr) & " / Received: " & std_logic'image(zr)
+        severity failure;
+      assert ng = patterns(i).ng
+        report "[Error] ng[" & integer'image(i) & "] >>> Expected: " & std_logic'image(patterns(i).ng) & " / Received: " & std_logic'image(ng)
+        severity failure;
+
     end loop;
 
-    assert false report "end of test" severity note;
+    assert false
+      report "end of test"
+      severity note;
     wait;
+
   end process;
 
 end architecture BEHAVIOR;
