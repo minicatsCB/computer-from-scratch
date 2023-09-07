@@ -31,50 +31,41 @@ begin
     );
 
   STIMULUS : process is
+    type pattern_type is record
+      data : std_logic;
+      sel  : std_logic;
+      o1   : std_logic;
+      o2   : std_logic;
+    end record pattern_type;
+
+    type pattern_array is array (natural range <>) of pattern_type;
+
+    constant patterns : pattern_array :=
+    (
+      1 => ('0', '0', '0', '0'),
+      2 => ('0', '1', '0', '0'),
+      3 => ('1', '0', '1', '0'),
+      4 => ('1', '1', '0', '1')
+    );
+
   begin
 
-    data <= '0';
-    sel  <= '0';
-    wait for 50 ns;
-    assert o1 = '0'
-      report "Expected: o1 = 0 | Received: o1 = other result"
-      severity failure;
-    assert o2 = '0'
-      report "Expected: o2 = 0 | Received: o2 = other result"
-      severity failure;
+    for i in patterns'range loop
+      sel  <= patterns(i).sel;
+      data  <= patterns(i).data;
+      wait for 50 ns;
+      assert o1 = patterns(i).o1
+        report "[Error] o1[" & integer'image(i) & "] >>> Expected: " & std_logic'image(patterns(i).o1) & " / Received: " & std_logic'image(o1)
+        severity failure;
+      assert o2 = patterns(i).o2
+        report "[Error] o2[" & integer'image(i) & "] >>> Expected: " & std_logic'image(patterns(i).o2) & " / Received: " & std_logic'image(o2)
+        severity failure;
 
-    data <= '0';
-    sel  <= '1';
-    wait for 50 ns;
-    assert o1 = '0'
-      report "Expected: o1 = 0 | Received: o1 = other result"
-      severity failure;
-    assert o2 = '0'
-      report "Expected: o2 = 0 | Received: o2 = other result"
-      severity failure;
+    end loop;
 
-    data <= '1';
-    sel  <= '0';
-    wait for 50 ns;
-    assert o1 = '1'
-      report "Expected: o1 = 1 | Received: o1 = other result"
-      severity failure;
-    assert o2 = '0'
-      report "Expected: o2 = 0 | Received: o2 = other result"
-      severity failure;
-
-    data <= '1';
-    sel  <= '1';
-    wait for 50 ns;
-    assert o1 = '0'
-      report "Expected: o1 = 0 | Received: o1 = other result"
-      severity failure;
-    assert o2 = '1'
-      report "Expected: o2 = 1 | Received: o2 = other result"
-      severity failure;
-
-    assert true
-      report "Tests finished";
+    assert false
+      report "Tests finished"
+      severity note;
     wait;
 
   end process STIMULUS;
