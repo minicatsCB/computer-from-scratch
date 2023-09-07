@@ -1,6 +1,9 @@
 library IEEE;
   use ieee.std_logic_1164.all;
 
+library work;
+  use work.utils_package.to_string;
+
 entity ALU2W16B_CHIP_TB is
 end entity ALU2W16B_CHIP_TB;
 
@@ -33,24 +36,6 @@ architecture BEHAVIOR of ALU2W16B_CHIP_TB is
   signal o  : std_logic_vector(15 downto 0);
   signal zr : std_logic;
   signal ng : std_logic;
-
-  function to_string (vec: std_logic_vector) return string is
-
-    variable result : string (1 to vec'length) := (others => NUL);
-    variable j      : integer                  := 1;
-
-  begin
-
-    for i in vec'range loop
-
-      result(j) := std_logic'image(vec(i))(2);
-      j         := j + 1;
-
-    end loop;
-
-    return result;
-
-  end function;
 
 begin
 
