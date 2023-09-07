@@ -18,6 +18,24 @@ architecture BEHAVIOR of ADDER2W16B_CHIP_TB is
   signal b   : std_logic_vector(15 downto 0);
   signal o   : std_logic_vector(15 downto 0);
 
+  function to_string (vec: std_logic_vector) return string is
+
+    variable result : string (1 to vec'length) := (others => NUL);
+    variable j      : integer                  := 1;
+
+  begin
+
+    for i in vec'range loop
+
+      result(j) := std_logic'image(vec(i))(2);
+      j         := j + 1;
+
+    end loop;
+
+    return result;
+
+  end function;
+
 begin
 
   DUT : ADDER2W16B_CHIP
@@ -28,52 +46,42 @@ begin
     );
 
   STIMULUS : process is
+    type pattern_type is record
+      a   : std_logic_vector(15 downto 0);
+      b   : std_logic_vector(15 downto 0);
+      o   : std_logic_vector(15 downto 0);
+    end record pattern_type;
+
+    type pattern_array is array (natural range <>) of pattern_type;
+
+    constant patterns : pattern_array :=
+    (
+      1 => ("0000000000000000", "0000000000000000", "0000000000000000"),
+      2 => ("0000000000000000", "1111111111111111", "1111111111111111"),
+      3 => ("1111111111111111", "1111111111111111", "1111111111111110"),
+      4 => ("1010101010101010", "0101010101010101", "1111111111111111"),
+      5 => ("0011110011000011", "0000111111110000", "0100110010110011"),
+      6 => ("0001001000110100", "1001100001110110", "1010101010101010")
+    );
+
   begin
 
-    a <= "0000000000000000";
-    b <= "0000000000000000";
-    wait for 50 ns;
-    assert o = "0000000000000000"
-      report "Expected: o = 0000000000000000 | Received: o = other result"
-      severity failure;
+    --  Check each pattern.
+    for i in patterns'range loop
 
-    a <= "0000000000000000";
-    b <= "1111111111111111";
-    wait for 50 ns;
-    assert o = "1111111111111111"
-      report "Expected: o = 1111111111111111 | Received: o = other result"
-      severity failure;
+      a  <= patterns(i).a;
+      b  <= patterns(i).b;
+      wait for 50 ns;
 
-    a <= "1111111111111111";
-    b <= "1111111111111111";
-    wait for 50 ns;
-    assert o = "1111111111111110"
-      report "Expected: o = 1111111111111110 | Received: o = other result"
-      severity failure;
+      assert o = patterns(i).o
+        report "[Error] o[" & integer'image(i) & "] >>> Expected: " & to_string(patterns(i).o) & " / Received: " & to_string(o)
+        severity failure;
 
-    a <= "1010101010101010";
-    b <= "0101010101010101";
-    wait for 50 ns;
-    assert o = "1111111111111111"
-      report "Expected: o = 1111111111111111 | Received: o = other result"
-      severity failure;
+    end loop;
 
-    a <= "0011110011000011";
-    b <= "0000111111110000";
-    wait for 50 ns;
-    assert o = "0100110010110011"
-      report "Expected: o = 0100110010110011 | Received: o = other result"
-      severity failure;
-
-    a <= "0001001000110100";
-    b <= "1001100001110110";
-    wait for 50 ns;
-    assert o = "1010101010101010"
-      report "Expected: o = 1010101010101010 | Received: o = other result"
-      severity failure;
-
-    assert true
-      report "Tests finished";
+    assert false
+      report "end of test"
+      severity note;
     wait;
 
   end process STIMULUS;
