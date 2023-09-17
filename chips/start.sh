@@ -60,7 +60,7 @@ do
            ghdl -s ${name}_tb.vhdl
            ghdl -a ${name}_tb.vhdl
            ghdl -e ${name}_tb
-           ghdl -r ${name}_tb --vcd=${name}.vcd --stop-time=2000ns
+           ghdl -r ${name}_tb --vcd=${name}.vcd --stop-time=10000ns
            gtkwave.exe ${name}.vcd  # Assumes access to Windows executable
            ;;
          c) echo -e "Cleaning project"
