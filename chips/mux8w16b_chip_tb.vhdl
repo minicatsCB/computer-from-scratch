@@ -2,6 +2,9 @@ library IEEE;
   use ieee.std_logic_1164.all;
   use ieee.numeric_std.all;
 
+library work;
+  use work.utils_package.to_string;
+
 entity MUX8W16B_CHIP_TB is
 end entity MUX8W16B_CHIP_TB;
 
@@ -51,64 +54,55 @@ begin
 
   STIMULUS : process is
 
-    variable count : std_logic_vector(2 downto 0);
+    type pattern_type is record
+      a   : std_logic_vector(15 downto 0);
+      b   : std_logic_vector(15 downto 0);
+      c   : std_logic_vector(15 downto 0);
+      d   : std_logic_vector(15 downto 0);
+      e   : std_logic_vector(15 downto 0);
+      f   : std_logic_vector(15 downto 0);
+      g   : std_logic_vector(15 downto 0);
+      h   : std_logic_vector(15 downto 0);
+      sel : std_logic_vector(2 downto 0);
+      o   : std_logic_vector(15 downto 0);
+    end record pattern_type;
+
+    type pattern_array is array (natural range <>) of pattern_type;
+
+    constant patterns : pattern_array :=
+    (
+      1 => ("0000000000000000", "1111111111111111", "1111111100000000", "0000000011111111", "1010101010101010", "1111000011110000", "0101010101010101", "0000111100001111", "000", "0000000000000000"),
+      2 => ("0000000000000000", "1111111111111111", "1111111100000000", "0000000011111111", "1010101010101010", "1111000011110000", "0101010101010101", "0000111100001111", "001", "1111111111111111"),
+      3 => ("0000000000000000", "1111111111111111", "1111111100000000", "0000000011111111", "1010101010101010", "1111000011110000", "0101010101010101", "0000111100001111", "010", "1111111100000000"),
+      4 => ("0000000000000000", "1111111111111111", "1111111100000000", "0000000011111111", "1010101010101010", "1111000011110000", "0101010101010101", "0000111100001111", "011", "0000000011111111"),
+      5 => ("0000000000000000", "1111111111111111", "1111111100000000", "0000000011111111", "1010101010101010", "1111000011110000", "0101010101010101", "0000111100001111", "100", "1010101010101010"),
+      6 => ("0000000000000000", "1111111111111111", "1111111100000000", "0000000011111111", "1010101010101010", "1111000011110000", "0101010101010101", "0000111100001111", "101", "1111000011110000"),
+      7 => ("0000000000000000", "1111111111111111", "1111111100000000", "0000000011111111", "1010101010101010", "1111000011110000", "0101010101010101", "0000111100001111", "110", "0101010101010101"),
+      8 => ("0000000000000000", "1111111111111111", "1111111100000000", "0000000011111111", "1010101010101010", "1111000011110000", "0101010101010101", "0000111100001111", "111", "0000111100001111")
+    );
 
   begin
 
-    for idx in 0 to 7 loop
-
-      -- Convert decimal integer idx to its binary representation
-      count := std_logic_vector(to_unsigned(idx, 3));
-
-      a   <= "0000000000000000";
-      b   <= "1111111111111111";
-      c   <= "1111111100000000";
-      d   <= "0000000011111111";
-      e   <= "1010101010101010";
-      f   <= "1111000011110000";
-      g   <= "0101010101010101";
-      h   <= "0000111100001111";
-      sel <= count;
+    for i in patterns'range loop
+      a  <= patterns(i).a;
+      b  <= patterns(i).b;
+      c  <= patterns(i).c;
+      d  <= patterns(i).d;
+      e  <= patterns(i).e;
+      f  <= patterns(i).f;
+      g  <= patterns(i).g;
+      h  <= patterns(i).h;
+      sel  <= patterns(i).sel;
       wait for 50 ns;
-
-      if (sel = "000") then
-        assert o = a
-          report "Expected: o = a | Received: o = other result"
-          severity failure;
-      elsif (sel = "001") then
-        assert o = b
-          report "Expected: o = b | Received: o = other result"
-          severity failure;
-      elsif (sel = "010") then
-        assert o = c
-          report "Expected: o = c | Received: o = other result"
-          severity failure;
-      elsif (sel = "011") then
-        assert o = d
-          report "Expected: o = d | Received: o = other result"
-          severity failure;
-      elsif (sel = "100") then
-        assert o = e
-          report "Expected: o = e | Received: o = other result"
-          severity failure;
-      elsif (sel = "101") then
-        assert o = f
-          report "Expected: o = f | Received: o = other result"
-          severity failure;
-      elsif (sel = "110") then
-        assert o = g
-          report "Expected: o = g | Received: o = other result"
-          severity failure;
-      elsif (sel = "111") then
-        assert o = h
-          report "Expected: o = h | Received: o = other result"
-          severity failure;
-      end if;
+      assert o = patterns(i).o
+        report "[Error] o[" & integer'image(i) & "] >>> Expected: " & to_string(patterns(i).o) & " / Received: " & to_string(o)
+        severity failure;
 
     end loop;
 
-    assert true
-      report "Tests finished";
+    assert false
+      report "Tests finished"
+      severity note;
     wait;
 
   end process STIMULUS;
