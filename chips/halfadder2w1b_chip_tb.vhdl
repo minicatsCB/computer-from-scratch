@@ -30,53 +30,46 @@ begin
       CARRY => carry
     );
 
-  STIMULUS : process is
-  begin
+    STIMULUS : process is
 
-    a <= '0';
-    b <= '0';
-    wait for 50 ns;
-    assert sum = '0'
-      report "Expected: sum = 0 | Received: sum = other result"
-      severity failure;
-    assert carry = '0'
-      report "Expected: carry = 0 | Received: carry = other result"
-      severity failure;
+      type pattern_type is record
+        a       : std_logic;
+        b       : std_logic;
+        sum     : std_logic;
+        carry   : std_logic;
+      end record pattern_type;
+  
+      type pattern_array is array (natural range <>) of pattern_type;
+  
+      constant patterns : pattern_array :=
+      (
+        1 => ('0', '0', '0', '0'),
+        2 => ('0', '1', '1', '0'),
+        3 => ('1', '0', '1', '0'),
+        4 => ('1', '1', '0', '1')
+      );
+  
+    begin
+  
+      for i in patterns'range loop
+        a  <= patterns(i).a;
+        b  <= patterns(i).b;
+        wait for 50 ns;
+        assert sum = patterns(i).sum
+          report "[Error] sum[" & integer'image(i) & "] >>> Expected: " & std_logic'image(patterns(i).sum) & " / Received: " & std_logic'image(sum)
+          severity failure;
 
-    a <= '0';
-    b <= '1';
-    wait for 50 ns;
-    assert sum = '1'
-      report "Expected: sum = 1 | Received: sum = other result"
-      severity failure;
-    assert carry = '0'
-      report "Expected: carry = 0 | Received: carry = other result"
-      severity failure;
-
-    a <= '1';
-    b <= '0';
-    wait for 50 ns;
-    assert sum = '1'
-      report "Expected: sum = 1 | Received: sum = other result"
-      severity failure;
-    assert carry = '0'
-      report "Expected: carry = 0 | Received: carry = other result"
-      severity failure;
-
-    a <= '1';
-    b <= '1';
-    wait for 50 ns;
-    assert sum = '0'
-      report "Expected: sum = 0 | Received: sum = other result"
-      severity failure;
-    assert carry = '1'
-      report "Expected: carry = 1 | Received: carry = other result"
-      severity failure;
-
-    assert true
-      report "Tests finished";
-    wait;
-
-  end process STIMULUS;
+        assert carry = patterns(i).carry
+          report "[Error] carry[" & integer'image(i) & "] >>> Expected: " & std_logic'image(patterns(i).carry) & " / Received: " & std_logic'image(carry)
+          severity failure;
+  
+      end loop;
+  
+      assert false
+        report "Tests finished"
+        severity note;
+      wait;
+  
+    end process STIMULUS;
 
 end architecture BEHAVIOR;
