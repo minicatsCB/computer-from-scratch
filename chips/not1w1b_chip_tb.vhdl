@@ -17,29 +17,39 @@ architecture BEHAVIOR of NOT1W1B_CHIP_TB is
 
 begin
 
-  DUT : NOT1W1B_CHIP
+  DUT : entity work.not1w1b_chip(rtl)
     port map (
       A => a,
       O => o
     );
 
   STIMULUS : process is
+    type pattern_type is record
+      a : std_logic;
+      o : std_logic;
+    end record pattern_type;
+
+    type pattern_array is array (natural range <>) of pattern_type;
+
+    constant patterns : pattern_array :=
+    (
+      1 => ('0', '1'),
+      2 => ('1', '0')
+    );
   begin
 
-    a <= '0';
-    wait for 50 ns;
-    assert o = '1'
-      report "Expected: o = 1 | Received: o = other result"
-      severity failure;
+    for i in patterns'range loop
+      a  <= patterns(i).a;
+      wait for 50 ns;
+      assert o = patterns(i).o
+        report "[Error] o[" & integer'image(i) & "] >>> Expected: " & std_logic'image(patterns(i).o) & " / Received: " & std_logic'image(o)
+        severity failure;
 
-    a <= '1';
-    wait for 50 ns;
-    assert o = '0'
-      report "Expected: o = 0 | Received: o = other result"
-      severity failure;
+    end loop;
 
-    assert true
-      report "Tests finished";
+    assert false
+      report "Tests finished"
+      severity note;
     wait;
 
   end process STIMULUS;

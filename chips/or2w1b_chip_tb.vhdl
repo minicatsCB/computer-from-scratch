@@ -20,7 +20,7 @@ architecture BEHAVIOR of OR2W1B_CHIP_TB is
 
 begin
 
-  DUT : OR2W1B_CHIP
+  DUT : entity work.or2w1b_chip(rtl)
     port map (
       A => a,
       B => b,
@@ -28,38 +28,36 @@ begin
     );
 
   STIMULUS : process is
+    type pattern_type is record
+      a : std_logic;
+      b : std_logic;
+      o : std_logic;
+    end record pattern_type;
+
+    type pattern_array is array (natural range <>) of pattern_type;
+
+    constant patterns : pattern_array :=
+    (
+      1 => ('0', '0', '0'),
+      2 => ('0', '1', '1'),
+      3 => ('1', '0', '1'),
+      4 => ('1', '1', '1')
+    );
   begin
 
-    a <= '0';
-    b <= '0';
-    wait for 50 ns;
-    assert o = '0'
-      report "Expected: o = 0 | Received: o = 1"
-      severity failure;
+    for i in patterns'range loop
+      a  <= patterns(i).a;
+      b  <= patterns(i).b;
+      wait for 50 ns;
+      assert o = patterns(i).o
+        report "[Error] o[" & integer'image(i) & "] >>> Expected: " & std_logic'image(patterns(i).o) & " / Received: " & std_logic'image(o)
+        severity failure;
 
-    a <= '0';
-    b <= '1';
-    wait for 50 ns;
-    assert o = '1'
-      report "Expected: o = 1 | Received: o = 0"
-      severity failure;
+    end loop;
 
-    a <= '1';
-    b <= '0';
-    wait for 50 ns;
-    assert o = '1'
-      report "Expected: o = 1 | Received: o = 0"
-      severity failure;
-
-    a <= '1';
-    b <= '1';
-    wait for 50 ns;
-    assert o = '1'
-      report "Expected: o = 1 | Received: o = 0"
-      severity failure;
-
-    assert true
-      report "Tests finished";
+    assert false
+      report "Tests finished"
+      severity note;
     wait;
 
   end process STIMULUS;

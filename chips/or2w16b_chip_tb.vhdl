@@ -1,6 +1,9 @@
 library IEEE;
   use ieee.std_logic_1164.all;
 
+library work;
+  use work.utils_package.to_string;
+
 entity OR2W16B_CHIP_TB is
 end entity OR2W16B_CHIP_TB;
 
@@ -20,7 +23,7 @@ architecture BEHAVIOR of OR2W16B_CHIP_TB is
 
 begin
 
-  DUT : OR2W16B_CHIP
+  DUT : entity work.or2w16b_chip(rtl)
     port map (
       A => a,
       B => b,
@@ -28,24 +31,38 @@ begin
     );
 
   STIMULUS : process is
+    type pattern_type is record
+      a : std_logic_vector(15 downto 0);
+      b : std_logic_vector(15 downto 0);
+      o : std_logic_vector(15 downto 0);
+    end record pattern_type;
+
+    type pattern_array is array (natural range <>) of pattern_type;
+
+    constant patterns : pattern_array :=
+    (
+      1 => ("0000000000000000", "0000000000000000", "0000000000000000"),
+      2 => ("0000000000000000", "1111111111111111", "1111111111111111"),
+      3 => ("1111111111111111", "1111111111111111", "1111111111111111"),
+      4 => ("1010101010101010", "0101010101010101", "1111111111111111"),
+      5 => ("0011110011000011", "0000111111110000", "0011111111110011"),
+      6 => ("0001001000110100", "1001100001110110", "1001101001110110")
+    );
   begin
 
-    a <= "0000000000000000";
-    b <= "1111111111111111";
-    wait for 50 ns;
-    assert o = "1111111111111111"
-      report "Expected: o = (a or b) | Received: o = other result"
-      severity failure;
+    for i in patterns'range loop
+      a  <= patterns(i).a;
+      b  <= patterns(i).b;
+      wait for 50 ns;
+      assert o = patterns(i).o
+        report "[Error] o[" & integer'image(i) & "] >>> Expected: " & to_string(patterns(i).o) & " / Received: " & to_string(o)
+        severity failure;
 
-    a <= "0001110001010100";
-    b <= "0001110101011001";
-    wait for 50 ns;
-    assert o = "0001110101011101"
-      report "Expected: o = (a or b) | Received: o = other result"
-      severity failure;
+    end loop;
 
-    assert true
-      report "Tests finished";
+    assert false
+      report "Tests finished"
+      severity note;
     wait;
 
   end process STIMULUS;

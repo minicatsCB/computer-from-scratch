@@ -48,7 +48,7 @@ architecture BEHAVIOR of OR16W1B_CHIP_TB is
 
 begin
 
-  DUT : OR16W1B_CHIP
+  DUT : entity work.or16w1b_chip(rtl)
     port map (
       A => a,
       B => b,
@@ -70,94 +70,65 @@ begin
     );
 
   STIMULUS : process is
+    type pattern_type is record
+      a : std_logic;
+      b   : std_logic;
+      c   : std_logic;
+      d   : std_logic;
+      e   : std_logic;
+      f   : std_logic;
+      g   : std_logic;
+      h   : std_logic;
+      i   : std_logic;
+      j   : std_logic;
+      k   : std_logic;
+      l   : std_logic;
+      m   : std_logic;
+      n   : std_logic;
+      p   : std_logic;
+      q   : std_logic;
+      o   : std_logic;
+    end record pattern_type;
+
+    type pattern_array is array (natural range <>) of pattern_type;
+
+    constant patterns : pattern_array :=
+    (
+      1 => ('0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'),
+      2 => ('1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'),
+      3 => ('0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'),
+      4 => ('0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '1'),
+      5 => ('0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '1', '0', '1')
+    );
   begin
 
-    a <= '0';
-    b <= '0';
-    c <= '0';
-    d <= '0';
-    e <= '0';
-    f <= '0';
-    g <= '0';
-    h <= '0';
-    i <= '0';
-    j <= '0';
-    k <= '0';
-    l <= '0';
-    m <= '0';
-    n <= '0';
-    p <= '0';
-    q <= '0';
-    wait for 50 ns;
-    assert o = '0'
-      report "Expected: o = (a or b or .. or q) | Received: o = other result"
-      severity failure;
+    for idx in patterns'range loop
+      a  <= patterns(idx).a;
+      b  <= patterns(idx).b;
+      c  <= patterns(idx).c;
+      d  <= patterns(idx).d;
+      e  <= patterns(idx).e;
+      f  <= patterns(idx).f;
+      g  <= patterns(idx).g;
+      h  <= patterns(idx).h;
+      i  <= patterns(idx).i;
+      j  <= patterns(idx).j;
+      k  <= patterns(idx).k;
+      l  <= patterns(idx).l;
+      m  <= patterns(idx).m;
+      n  <= patterns(idx).n;
+      p  <= patterns(idx).p;
+      q  <= patterns(idx).q;
+      wait for 50 ns;
+      assert o = patterns(idx).o
+      report "[Error] o[" & integer'image(idx) & "] >>> Expected: " & std_logic'image(patterns(idx).o) & " / Received: " & std_logic'image(o)
+        severity failure;
 
-    a <= '1';
-    b <= '1';
-    c <= '1';
-    d <= '1';
-    e <= '1';
-    f <= '1';
-    g <= '1';
-    h <= '1';
-    i <= '1';
-    j <= '1';
-    k <= '1';
-    l <= '1';
-    m <= '1';
-    n <= '1';
-    p <= '1';
-    q <= '1';
-    wait for 50 ns;
-    assert o = '1'
-      report "Expected: o = (a or b or .. or q) | Received: o = other result"
-      severity failure;
+    end loop;
 
-    a <= '0';
-    b <= '1';
-    c <= '0';
-    d <= '0';
-    e <= '0';
-    f <= '0';
-    g <= '0';
-    h <= '0';
-    i <= '0';
-    j <= '0';
-    k <= '0';
-    l <= '0';
-    m <= '0';
-    n <= '0';
-    p <= '0';
-    q <= '0';
-    wait for 50 ns;
-    assert o = '1'
-      report "Expected: o = (a or b or .. or q) | Received: o = other result"
-      severity failure;
-
-    a <= '0';
-    b <= '1';
-    c <= '0';
-    d <= '0';
-    e <= '0';
-    f <= '0';
-    g <= '0';
-    h <= '0';
-    i <= '0';
-    j <= '0';
-    k <= '0';
-    l <= '1';
-    m <= '0';
-    n <= '0';
-    p <= '0';
-    q <= '0';
-    wait for 50 ns;
-    assert o = '1'
-      report "Expected: o = (a or b or .. or q) | Received: o = other result"
-      severity failure;
-
-    assert true
-      report "Tests finished";
+    assert false
+      report "Tests finished"
+      severity note;
     wait;
 
   end process STIMULUS;
