@@ -23,7 +23,7 @@ architecture BEHAVIOR of DFF_CHIP_TB is
 
 begin
 
-  DUT : DFF_CHIP
+  DUT : entity work.DFF_CHIP(rtl)
     port map (
       CLK  => clk,
       DATA => data,
@@ -41,16 +41,31 @@ begin
     -- Take the DUT out of reset
     data <= '1';
     wait for 20 ns;
+    assert q = '1' severity failure;
+    assert nq = '0' severity failure;
+
     data <= '0';
     wait for 22 ns;
+    assert q = '0' severity failure;
+    assert nq = '1' severity failure;
+
     data <= '0';
     wait for 6 ns;
+    assert q = '0' severity failure;
+    assert nq = '1' severity failure;
+
     data <= '1';
     wait for 20 ns;
+    assert q = '1' severity failure;
+    assert nq = '0' severity failure;
 
     -- Reset the DUT
     data <= '0';
+    assert q = '1' severity failure;
 
+    assert false
+      report "Tests finished"
+      severity note;
     wait;
 
   end process STIMULUS;
